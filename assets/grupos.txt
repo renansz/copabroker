@@ -1,0 +1,8 @@
+{"Grupo A":{"Uruguai";"México";"África do Sul";"França"};
+"Grupo B":{"Argentina";"Coreia do Sul";"Grécia";"Nigéria"};
+"Grupo C":{"Estados Unidos";"Inglaterra";"Eslovênia";"Argélia"};
+"Grupo D":{"Alemanha";"Gana";"Austrália";"Sérvia"};
+"Grupo E":{"Holanda";"Japão";"Dinamarca";"Camarões"};
+"Grupo F":{"Paraguai";"Eslováquia";"Nova Zelândia";"Itália"};
+"Grupo G":{"Brasil";"Portugal";"Costa do Marfim";"Coreia do Norte"};
+"Grupo H":{"Espanha";"Chile";"Suiça";"Honduras"}}

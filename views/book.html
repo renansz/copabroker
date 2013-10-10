@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="http://gitcdn.github.io/ajax/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet" />
+  <script src="http://gitcdn.github.io/ajax/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+  <script src="https://raw.github.com/josscrowcroft/accounting.js/master/accounting.min.js"></script>
+
+  <title>Book</title>
+</head>
+<body>
+  <div class="container">
+    <div class="col-md-12">
+      <nav class="navbar navbar-inverse" role="navigation">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="#">Project name</a>
+	</div>
+	<div class="collapse navbar-collapse">
+	  <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+	  </ul>
+	</div><!-- /.nav-collapse -->
+      </nav>
+    </div>
+  </div><!-- /.container -->
+  
+  <div class="container">
+    <div class="col-xs-12 col-sm-12">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+      </p>
+      <div class="jumbotron" style="background-image: url('http://static4.depositphotos.com/1016204/341/i/950/depositphotos_3413733-Soccer-ball-standing-on-grass-field.jpg'); background-position: -50px -200px; color: #DDD; -moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">
+	<h1 style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Book de Ofertas</h1>
+        <p style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Dê seu lance ou coloque sua opção à venda.</p>
+      </div>
+      <div class="row text-center">
+	<div class="col-lg-12 col-md-12">
+	  <h1 class="text-center"><span name="ticker"></span><span name="last" class="label label-default">22.50</span></h1>
+	</div>
+	<br/>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2">
+          <h2 class="text-center"><span class="label label-success">Compra</span></h2>
+	  <table class="table table-striped">
+            <thead>
+              <tr>
+		<th class="text-center">Quantidade</th>
+		<th class="text-right">Preço</th>
+              </tr>
+            </thead>
+            <tbody name="buy-side">
+            </tbody>
+	  </table>
+        </div><!--/span-->
+
+
+
+        <div class="col-lg-2 col-md-2">
+          <h2 class="text-center"></h2>
+	  <table class="">
+            <thead>
+              <tr>
+		<th class="text-left"></th>
+              </tr>
+            </thead>
+            <tbody>
+	      <tr><td><h1></h1></td></tr>
+              <tr>
+		<td class="text-center">
+		  <div class="col-lg-2 col-md-2" style="background-image: url('http://th09.deviantart.net/fs70/PRE/f/2011/021/4/4/world_flags_by_atillawolf-d37oozl.jpg'); background-position: -894px -336px; width: 150px; height: 85px; /*background-size=100%; bandeiras separadas*/">
+		  </div>
+		</td>
+              </tr>
+            </tbody>
+	  </table>
+        </div><!--/span-->
+
+        <div class="col-lg-3 col-md-3">
+          <h2 class="text-center"><span class="label label-warning">Venda</span></h2>
+	  <table class="table table-striped">
+            <thead>
+              <tr>
+		<th class="text-left">Preço</th>
+		<th class="text-center">Quantidade</th>
+              </tr>
+            </thead>
+            <tbody name="sell-side">
+            </tbody>
+	  </table>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <br/>
+      <div class="text-center">
+	<style> #btn-chk-ordem { width: 90px; height:30px;} </style>
+	<div id="btn-chk-ordem" class="toggle btn btn-success" data-toggle="toggle">
+	  <input name="tipoOrdem" checked type="checkbox"/>
+	  <div class="toggle-group">
+	    <label class="toggle-on btn btn-success">Compra</label>
+	    <label class="toggle-off btn btn-warning">Venda</label>
+	    <span class="toggle-handle btn btn-default"></span>
+	  </div>
+	</div>
+      </div>
+      <br/>
+      <div class="row text-center">
+
+	<form class="form-horizontal" role="form">
+	  <div class="form-group">
+	    <label class="col-lg-2 col-md-2 control-label col-lg-offset-3">Quantidade</label>
+	    <div class="col-lg-2 col-md-2">
+	      <input type="text" class="form-control text-right" id="formQtde" placeholder="100" />
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-lg-2 col-md-2 control-label col-lg-offset-3">Preço</label>
+	    <div class="col-lg-2 col-md-2">
+	      <input type="form-control" class="form-control text-right" id="formPreco" placeholder="22,50" />
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-lg-2 col-md-2 control-label col-lg-offset-3">Total</label>
+	    <div class="col-lg-2 col-md-2">
+	      <p class="form-control-static text-right" id="precoTotal"></p>
+	    </div>
+	  </div>
+	</form>
+	
+      </div> <!-- row -->
+
+      <br />
+      <div class="row text-center">
+
+	<!-- Button trigger modal -->
+	<a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-primary btn-lg btn-success">Enviar Ordem</a>
+	  	    
+      </div><!--row -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Confirma Envio de Ordem</h4>
+            </div>
+            <div class="modal-body">
+	      <div class="container">
+              <div class="row">
+		<h2 id="tipoOrdem" class="text-success">Compra</h2>
+	      </div>
+	      <div class="row">
+		<div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3"><h4>Preço:</h4></div>
+		<div class="col-xs-4 col-md-3 col-lg-3 text-right"><h4></h4><p name="modalPreco"></p></div>
+	      </div>
+              <div class="row">
+		<div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3"><h4>Quantidade:</h4></div>
+		<div class="col-xs-4 col-md-3 col-lg-3 text-right"><h4></h4><p name="modalQtde"></p></div>
+	      </div>
+	      <div class="row alert-info">
+		<div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3"><h4>Total:</h4></div>
+		<div class="col-xs-4 col-md-3 col-lg-3 text-right"><h4></h4><p name="modalTotal">12345</p></div>
+	      </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Confirmar</button>
+            </div>
+	    </div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+      
+    </div><!-- -->
+  </div><!-- container-->
+  
+ 
+  <script type="text/javascript" src="../static/book.js"> </script>
+
+</body>
+
+</html>
