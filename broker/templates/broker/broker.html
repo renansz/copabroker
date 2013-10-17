@@ -1,0 +1,146 @@
+{% extends "broker/base.html" %}
+
+{% block title %} CopaBroker {% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="col-xs-12 col-sm-12">
+		<p class="pull-right visible-xs">
+			<button type="button" class="btn btn-primary btn-xs"
+				data-toggle="offcanvas">Toggle nav</button>
+		</p>
+		<div class="jumbotron"
+			style="background-image: url('http://static4.depositphotos.com/1016204/341/i/950/depositphotos_3413733-Soccer-ball-standing-on-grass-field.jpg'); background-position: -50px -200px; color: #DDD; -moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">
+			<h1
+				style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Copa
+				Broker</h1>
+			<p
+				style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Compre
+				e venda as chances de seu time ganhar.</p>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 text-right">
+				<button type="button" id="btn-group" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-th"></span>
+				</button>
+				<button type="button" id="btn-ranking"
+					class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+				</button>
+			</div>
+
+		</div>
+		<div id="content" class="row">
+			<!-- content -->
+      <style type="text/css">td a{color: black; }</style>
+			{% for group,teams in groups.iteritems %}
+      <div class="col-6 col-sm-6 col-lg-4"><!--/groupTable-->
+        <h2>Grupo {{ group }}</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Seleção</th>
+              <th class="text-right">Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+			 {% for team in teams %}
+            <tr>
+              <td>{% cycle 1 2 3 4 %}</td>
+              <td>{{ team.A }}<a href="book">{{ team.country_name }}</a></td>
+              <td class="text-right">{{ team.fair_value }}</td>
+            </tr>			
+			 {% endfor%}
+          </tbody>
+        </table>
+      </div><!--/groupTable-->
+			{% endfor %}
+
+		</div>
+		<!--content -->
+
+		<div id="content-2" class="row">
+			<!--content-2-->
+			<div
+				class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+				<h2>Ranking de Cotações</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Seleção</th>
+							<th class="text-right">Preço</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Espanha</td>
+							<td class="text-right">22.50</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td><a href="book">Brasil</a></td>
+							<td class="text-right">22.00</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Holanda</td>
+							<td class="text-right">21.96</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Itália</td>
+							<td class="text-right">21.75</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Argentina</td>
+							<td class="text-right">20.50</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>França</td>
+							<td class="text-right">19.75</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>Alemanha</td>
+							<td class="text-right">19.50</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>Uruguai</td>
+							<td class="text-right">16.50</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>Chile</td>
+							<td class="text-right">13.50</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>México</td>
+							<td class="text-right">13.30</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>Portugal</td>
+							<td class="text-right">12.75</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<!--/span-->
+
+		</div><!--/content-->
+	</div>
+</div><!-- container-->
+
+{% endblock %} 
+
+{% block scripts %}
+  <script type="text/javascript" src="http://localhost:8000/static/broker.js"></script>
+{% endblock %}

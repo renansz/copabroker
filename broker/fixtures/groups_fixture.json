@@ -1,0 +1,321 @@
+[  {
+    "model": "broker.stock",
+    "pk": 1,
+    "fields": {
+          "ticker": "URU2014",
+          "country_name": "Uruguai",
+          "group": "A",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 2,
+    "fields": {
+          "ticker": "MEX2014",
+          "country_name": "México",
+          "group": "A",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 3,
+    "fields": {
+          "ticker": "AFR2014",
+          "country_name": "África do Sul",
+          "group": "A",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 4,
+    "fields": {
+          "ticker": "FRA2014",
+          "country_name": "França",
+          "group": "A",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 5,
+    "fields": {
+          "ticker": "ARG2014",
+          "country_name": "Argentina",
+          "group": "B",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 6,
+    "fields": {
+          "ticker": "CRS2014",
+          "country_name": "Coréia do Sul",
+          "group": "B",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 7,
+    "fields": {
+          "ticker": "GRE2014",
+          "country_name": "Grécia",
+          "group": "B",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 8,
+    "fields": {
+          "ticker": "NIG2014",
+          "country_name": "Nigéria",
+          "group": "B",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 9,
+    "fields": {
+          "ticker": "EUA2014",
+          "country_name": "Estados Unidos",
+          "group": "C",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 10,
+    "fields": {
+          "ticker": "ING2014",
+          "country_name": "Inglaterra",
+          "group": "C",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 11,
+    "fields": {
+          "ticker": "ESL2014",
+          "country_name": "Eslovênia",
+          "group": "C",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 12,
+    "fields": {
+          "ticker": "AGL2014",
+          "country_name": "Argélia",
+          "group": "C",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 13,
+    "fields": {
+          "ticker": "GER2014",
+          "country_name": "Alemanha",
+          "group": "D",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 14,
+    "fields": {
+          "ticker": "GAN2014",
+          "country_name": "Gana",
+          "group": "D",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 15,
+    "fields": {
+          "ticker": "AUS2014",
+          "country_name": "Austrália",
+          "group": "D",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 16,
+    "fields": {
+          "ticker": "SRV2014",
+          "country_name": "Sérvia",
+          "group": "D",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 17,
+    "fields": {
+          "ticker": "HOL2014",
+          "country_name": "Holanda",
+          "group": "E",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 18,
+    "fields": {
+          "ticker": "JAP2014",
+          "country_name": "Japão",
+          "group": "E",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 19,
+    "fields": {
+          "ticker": "DIN2014",
+          "country_name": "Dinamarca",
+          "group": "E",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 20,
+    "fields": {
+          "ticker": "CAM2014",
+          "country_name": "Camarões",
+          "group": "E",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 21,
+    "fields": {
+          "ticker": "PAR2014",
+          "country_name": "Paraguai",
+          "group": "F",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 22,
+    "fields": {
+          "ticker": "ESQ2014",
+          "country_name": "Eslováquia",
+          "group": "F",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 23,
+    "fields": {
+          "ticker": "NVZ2014",
+          "country_name": "Nova Zelândia",
+          "group": "F",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 24,
+    "fields": {
+          "ticker": "ITA2014",
+          "country_name": "Itália",
+          "group": "F",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 25,
+    "fields": {
+          "ticker": "BRA2014",
+          "country_name": "Brasil",
+          "group": "G",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 26,
+    "fields": {
+          "ticker": "POR2014",
+          "country_name": "Portugal",
+          "group": "G",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 27,
+    "fields": {
+          "ticker": "CDM2014",
+          "country_name": "Costa do Marfim",
+          "group": "G",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 28,
+    "fields": {
+          "ticker": "CRN2014",
+          "country_name": "Coréia do Norte",
+          "group": "G",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 29,
+    "fields": {
+          "ticker": "ESP2014",
+          "country_name": "Espanha",
+          "group": "H",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 30,
+    "fields": {
+          "ticker": "CHI2014",
+          "country_name": "Chile",
+          "group": "H",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 31,
+    "fields": {
+          "ticker": "SUI2014",
+          "country_name": "Suiça",
+          "group": "H",
+          "fair_value":  3.13
+    }
+  },
+    {
+    "model": "broker.stock",
+    "pk": 32,
+    "fields": {
+          "ticker": "HON2014",
+          "country_name": "Honduras",
+          "group": "H",
+          "fair_value":  3.13
+    }
+  }]
+  
