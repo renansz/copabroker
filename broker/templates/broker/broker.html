@@ -46,10 +46,10 @@
           </thead>
           <tbody>
 			 {% for team in teams %}
-            <tr>
+            <tr name="team">
               <td>{% cycle 1 2 3 4 %}</td>
-              <td>{{ team.A }}<a href="book">{{ team.country_name }}</a></td>
-              <td class="text-right">{{ team.fair_value }}</td>
+              <td name="country_name"><a href="book">{{ team.country_name }}</a></td>
+              <td name="price" class="text-right">{{ team.fair_value }}</td>
             </tr>			
 			 {% endfor%}
           </tbody>
@@ -73,63 +73,7 @@
 							<th class="text-right">Preço</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Espanha</td>
-							<td class="text-right">22.50</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><a href="book">Brasil</a></td>
-							<td class="text-right">22.00</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Holanda</td>
-							<td class="text-right">21.96</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>Itália</td>
-							<td class="text-right">21.75</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>Argentina</td>
-							<td class="text-right">20.50</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>França</td>
-							<td class="text-right">19.75</td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Alemanha</td>
-							<td class="text-right">19.50</td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Uruguai</td>
-							<td class="text-right">16.50</td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Chile</td>
-							<td class="text-right">13.50</td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>México</td>
-							<td class="text-right">13.30</td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Portugal</td>
-							<td class="text-right">12.75</td>
-						</tr>
-
+					<tbody name="content-2">
 					</tbody>
 				</table>
 			</div>
@@ -142,5 +86,5 @@
 {% endblock %} 
 
 {% block scripts %}
-  <script type="text/javascript" src="http://localhost:8000/static/broker.js"></script>
+  <script type="text/javascript" src="/static/broker.js"></script>
 {% endblock %}

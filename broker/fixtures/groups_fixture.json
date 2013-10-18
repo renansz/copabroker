@@ -35,7 +35,7 @@
           "ticker": "FRA2014",
           "country_name": "França",
           "group": "A",
-          "fair_value":  3.13
+          "fair_value":  13.13
     }
   },
     {
@@ -45,7 +45,7 @@
           "ticker": "ARG2014",
           "country_name": "Argentina",
           "group": "B",
-          "fair_value":  3.13
+          "fair_value":  23.13
     }
   },
     {
@@ -55,7 +55,7 @@
           "ticker": "CRS2014",
           "country_name": "Coréia do Sul",
           "group": "B",
-          "fair_value":  3.13
+          "fair_value":  4.13
     }
   },
     {
@@ -85,7 +85,7 @@
           "ticker": "EUA2014",
           "country_name": "Estados Unidos",
           "group": "C",
-          "fair_value":  3.13
+          "fair_value":  9.02
     }
   },
     {
@@ -95,7 +95,7 @@
           "ticker": "ING2014",
           "country_name": "Inglaterra",
           "group": "C",
-          "fair_value":  3.13
+          "fair_value":  21.31
     }
   },
     {
@@ -105,7 +105,7 @@
           "ticker": "ESL2014",
           "country_name": "Eslovênia",
           "group": "C",
-          "fair_value":  3.13
+          "fair_value":  0.13
     }
   },
     {
@@ -115,7 +115,7 @@
           "ticker": "AGL2014",
           "country_name": "Argélia",
           "group": "C",
-          "fair_value":  3.13
+          "fair_value":  5.13
     }
   },
     {
@@ -125,7 +125,7 @@
           "ticker": "GER2014",
           "country_name": "Alemanha",
           "group": "D",
-          "fair_value":  3.13
+          "fair_value":  41.05
     }
   },
     {
@@ -135,7 +135,7 @@
           "ticker": "GAN2014",
           "country_name": "Gana",
           "group": "D",
-          "fair_value":  3.13
+          "fair_value":  0.32
     }
   },
     {
@@ -145,7 +145,7 @@
           "ticker": "AUS2014",
           "country_name": "Austrália",
           "group": "D",
-          "fair_value":  3.13
+          "fair_value":  1.87
     }
   },
     {
@@ -155,7 +155,7 @@
           "ticker": "SRV2014",
           "country_name": "Sérvia",
           "group": "D",
-          "fair_value":  3.13
+          "fair_value":  2.13
     }
   },
     {
@@ -165,7 +165,7 @@
           "ticker": "HOL2014",
           "country_name": "Holanda",
           "group": "E",
-          "fair_value":  3.13
+          "fair_value":  31.57
     }
   },
     {
@@ -175,7 +175,7 @@
           "ticker": "JAP2014",
           "country_name": "Japão",
           "group": "E",
-          "fair_value":  3.13
+          "fair_value":  2.13
     }
   },
     {
@@ -185,7 +185,7 @@
           "ticker": "DIN2014",
           "country_name": "Dinamarca",
           "group": "E",
-          "fair_value":  3.13
+          "fair_value":  1.13
     }
   },
     {
@@ -195,7 +195,7 @@
           "ticker": "CAM2014",
           "country_name": "Camarões",
           "group": "E",
-          "fair_value":  3.13
+          "fair_value":  5.13
     }
   },
     {
@@ -205,7 +205,7 @@
           "ticker": "PAR2014",
           "country_name": "Paraguai",
           "group": "F",
-          "fair_value":  3.13
+          "fair_value":  2.13
     }
   },
     {
@@ -235,7 +235,7 @@
           "ticker": "ITA2014",
           "country_name": "Itália",
           "group": "F",
-          "fair_value":  3.13
+          "fair_value":  33.47
     }
   },
     {
@@ -245,7 +245,7 @@
           "ticker": "BRA2014",
           "country_name": "Brasil",
           "group": "G",
-          "fair_value":  3.13
+          "fair_value":  49.87
     }
   },
     {
@@ -255,7 +255,7 @@
           "ticker": "POR2014",
           "country_name": "Portugal",
           "group": "G",
-          "fair_value":  3.13
+          "fair_value":  18.76
     }
   },
     {
@@ -265,7 +265,7 @@
           "ticker": "CDM2014",
           "country_name": "Costa do Marfim",
           "group": "G",
-          "fair_value":  3.13
+          "fair_value":  3.45
     }
   },
     {
@@ -285,7 +285,7 @@
           "ticker": "ESP2014",
           "country_name": "Espanha",
           "group": "H",
-          "fair_value":  3.13
+          "fair_value":  43.21
     }
   },
     {
