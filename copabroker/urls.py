@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
@@ -6,9 +7,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'broker.views.home', name='home'),
-    url(r'^book$', 'broker.views.book', name='book'),
-    url(r'^profile$', 'broker.views.book', name='profile'),
+    url(r'^$', 'broker.views.home'),
+    url(r'^book/(\w+)/$', 'broker.views.book'),
+    url(r'^profile$', 'broker.views.profile'),
+    #url(r'^profile$', 'broker.views.profile', name='profile'), 
     # url(r'^copabroker/', include('copabroker.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

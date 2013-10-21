@@ -48,8 +48,8 @@
 			 {% for team in teams %}
             <tr name="team">
               <td>{% cycle 1 2 3 4 %}</td>
-              <td name="country_name"><a href="book">{{ team.country_name }}</a></td>
-              <td name="price" class="text-right">{{ team.fair_value }}</td>
+              <td name="name"><a href="book/{{team.ticker}}">{{ team.name }}</a></td>
+              <td name="price" class="text-right">{{ team.last_price }}</td>
             </tr>			
 			 {% endfor%}
           </tbody>
@@ -62,8 +62,7 @@
 
 		<div id="content-2" class="row">
 			<!--content-2-->
-			<div
-				class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+			<div	class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 				<h2>Ranking de Cotações</h2>
 				<table class="table table-striped">
 					<thead>
