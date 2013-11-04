@@ -12,15 +12,21 @@ $(document).ready(function() {
 	/*make the ranking visualization*/
 	$.each(teams,function(idx,val){
 		$("tbody[name=content-2]").append('<tr><td>'+Number(idx+1)+'</td><td name="name-2"><a href="book">'+val[1]+'</a></td><td name="price-2" class="text-right">'+val[0].replace(".",",")+'</td></tr>');
-    });
+  });
     
-    $("#btn-group").click(function(){
-	$("#content-2").hide();
-	$("#content").show();
-    });
+  $("#btn-group").click(function(){
+    $("#content-2").hide();
+    $("#content").show();
+  });
 
-    $("#btn-ranking").click(function(){
-	$("#content").hide();
-	$("#content-2").show();
-    });
+  $("#btn-ranking").click(function(){
+    $("#content").hide();
+    $("#content-2").show();
+  });
+
+  $('tr[name=team]').click( function() {
+    window.location = $(this).find('a').attr('href');
+  }).hover( function() {
+    $(this).toggleClass('hover');
+  });
 });

@@ -1,19 +1,18 @@
-# -*- coding: utf-8 -*-
-# Django settings for copabroker project.
+# Django settings for CopaBroker project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
+    ('Flaflu', 'flaflu@yahoo.com'),
+) 
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'copadev.db',                      # Or path to database file if using sqlite3.
+        'NAME': 'CopaBroker.sqlite3.db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -30,7 +29,7 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -84,7 +83,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '(81tedza-+_#1--d^qax&&-seiykx4fco5scpz2j=k0oxf7w6='
+SECRET_KEY = 'n_aw!px^58ra3!m95z@-yjq^!i-_pfgkz@_+9afaep@vk-5gmg'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -96,17 +95,17 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'copabroker.urls'
+ROOT_URLCONF = 'CopaBroker.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'copabroker.wsgi.application'
+WSGI_APPLICATION = 'CopaBroker.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -115,6 +114,8 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'BrokerEngine',
+	'broker',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -123,9 +124,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    'broker',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -143,18 +143,57 @@ LOGGING = {
             '()': 'django.utils.log.RequireDebugFalse'
         }
     },
+    
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)8s %(name)s %(module)s.%(funcName)s - %(message)s',
+        },
+        'simple' : {
+            'format': '%(name)s %(message)s',
+        },
+    },
+    
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'timed_rotating_file': {
+            'formatter': 'verbose',
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': 'BrokerEngine.engine.log',
+            'when': 'midnight'
+        },
+        'memory_trf': {
+            'class': 'logging.handlers.MemoryHandler',
+            'capacity': 1024*1024*4,
+            'target': 'timed_rotating_file'
+        },
+        'screen': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'        
+        },
+        
+        
     },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
+        },
+        'CopaBroker.BrokerEngine' : {
+            'handlers': ['memory_trf'],
+            'level' : 'INFO',
+            'propagate': True
+        },
+        'CopaBroker.BrokerEngine.order_queue' : {
+            'handlers': ['screen'],
+            'level' : 'INFO',
+            'propagate': True
         },
     }
 }

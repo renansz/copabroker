@@ -1,7 +1,13 @@
 {% extends "broker/base.html" %}
 
 {% block title %} CopaBroker {% endblock %}
-
+{% block additional_styles %}
+<style>
+  tr.team{
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="col-xs-12 col-sm-12">
@@ -46,10 +52,10 @@
           </thead>
           <tbody>
 			 {% for team in teams %}
-            <tr name="team">
+            <tr name="team" class="team">
               <td>{% cycle 1 2 3 4 %}</td>
               <td name="name"><a href="book/{{team.ticker}}">{{ team.name }}</a></td>
-              <td name="price" class="text-right">{{ team.last_price }}</td>
+              <td name="price" class="text-right">{{ team.value | floatformat:2 }}</td>
             </tr>			
 			 {% endfor%}
           </tbody>
@@ -58,10 +64,10 @@
 			{% endfor %}
 
 		</div>
-		<!--content -->
+		<!--/content -->
 
+		<!--content-2-->
 		<div id="content-2" class="row">
-			<!--content-2-->
 			<div	class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 				<h2>Ranking de Cotações</h2>
 				<table class="table table-striped">
