@@ -4,7 +4,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Flaflu', 'flaflu@yahoo.com'),
+  ('Flaflu', 'flaflu@yahoo.com'),
+  ('renansz','renansz@gmail.com'),  
 ) 
 
 MANAGERS = ADMINS
@@ -12,7 +13,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'CopaBroker.sqlite3.db',                      # Or path to database file if using sqlite3.
+        'NAME': 'CopaBroker.sqlite3.db', # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -115,7 +116,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'BrokerEngine',
-	'broker',
+    'broker',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -128,7 +129,13 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 )
 
+
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+LOGIN_URL = '/broker/login/'
+
+LOGOUT_URL = '/broker/logout/'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

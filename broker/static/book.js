@@ -13,9 +13,10 @@ function calcTotalPrice(){
 function validateFields(){
 //TODO
 //    $("#formPreco").val();
- //   $("#formPreco").val();
+//   $("#formPreco").val();
 }
 
+/*enable / disable "Comprar" btn */
 function toggleBtn(data){
   if (data == "" || data == NaN){
     $("#enviaOrdem").addClass('disabled');
@@ -24,8 +25,8 @@ function toggleBtn(data){
   }
 }
 
+/*Função geradora da exibição do book*/
 function generateBook(buy,sell,last,prices){
-    /*Função geradora da exibição do book*/
     /*preenche a tabela do book*/
     for(i=0;i<prices['buy'].length;i++) buy.append('<tr><td class="text-center">'+prices["buy"][i][1]+'</td><td class="text-right">'+accounting.formatMoney(prices["buy"][i][0],"",2,".",",")+'</td></tr>');
     for(i=0;i<prices['sell'].length;i++) sell.append('<tr><td class="text-left">'+accounting.formatMoney(prices["sell"][i][0],"",2,".",",")+'</td><td class="text-center">'+prices["sell"][i][1]+'</td></tr>');
@@ -33,18 +34,33 @@ function generateBook(buy,sell,last,prices){
     last.text(accounting.formatMoney(prices["last"],"",2,".",","));
 }
 
-$(document).ready(
+function modalFill(msg,img,type){
+  content = '<div class="row text-center">';
+  if (type) { content += '<div class="alert alert-'+type+'">' }
+  if (msg)  { content += '<p><strong>'+msg+'</strong></p>'; }
+  if (img)  { content += '<img src="'+img+'" />'; }
+  if (type) { content += '</div>' }
+  content += '</div>';
+  return content;
+}
 
-	function() {
-	$.get( "http://127.0.0.1:8000/api/get_book/"+decodeURIComponent(window.location.pathname).split('/')[3])
+/* clear the form */
+function clearForm(){
+	$("#formPreco").val("");
+	$("#formQtde").val("");
+  $("#precoTotal").text("");
+	return
+}
+
+$(document).ready(function() {
+
+  clearForm();
+
+	$.get("http://127.0.0.1:8000/api/get_book/"+decodeURIComponent(window.location.pathname).split('/')[3])
     .done(function(data){
   	/* generate the book */
 		generateBook($("tbody[name=buy-side]"), $("tbody[name=sell-side]"),	$("span[name=last]"), data)
   });
-
-	/* clear the form */
-	$("#formPreco").val("");
-	$("#formQtde").val("");
 
 	/* refresh the total price */
 	$(".form-control").on("keyup onpaste", function() {
@@ -68,7 +84,6 @@ $(document).ready(
         tipoOrdem = 'V';
       }
       price = getDecimalValue($("#formPreco").val());
-      alert('price : '+price);
       $("p[name=modalPreco]").text(price);
       qty = $("#formQtde").val();
 			$("p[name=modalQtde]").text(qty);
@@ -80,14 +95,20 @@ $(document).ready(
   $("button[name=confirmaOrdem]").click(function(){
   /*user e stock chumabada ticker = decodeURIComponent(window.location.pathname).split('/')[3] */
     $.post( "http://127.0.0.1:8000/api/new_order/",{'user_id':3,'ticker_id':1, 'order_type':tipoOrdem,'order_qty':qty,'order_value': price})
+      .always(function(){
+        $(".modal-body").html(modalFill(NaN,'/images/ajax-loader.gif'));
+      })
       .done(function(data){
   	  /* generate the order */ 
-      /*TODO - Wait interface and auto-close*/
-        alert('operação concluida com sucesso');
+      /*TODO - Wait interface and auto-close & use the data to process the status*/
+        $(".modal-body").html(modalFill('Ordem enviada com sucesso.',NaN,'success'));
+        /* clear the form */
+        clearForm();
         /*alert(JSON.stringify(data));*/
 		    })
       .fail(function(data) {
-        alert( "error" );
+        /*TODO process the data from error not a fixed msg*/
+        $(".modal-body").html(modalFill('Não foi possível enviar sua ordem<br/>Tente Novamente.',NaN,'danger'));
         alert(JSON.stringify(data));
       })
   });
@@ -99,12 +120,8 @@ $(document).ready(
 		// change to use accounting js library
 		$(this).val($(this).val().replace(/\./, ","));
 	});
+	
 
-	/*enable-disable "Comprar" button*/
-  $("#precoTotal").change(function(){
-    alert('mudou');
 
-  });
-        
 
 });

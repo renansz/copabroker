@@ -2,6 +2,7 @@
 
 {% block additional_styles %}
   <link href="/static/bootstrap-switch.css" rel="stylesheet">
+  <link href="/static/book.css" rel="stylesheet">
 {% endblock %}
 
 {% block title %} CopaBroker - Book {% endblock %}
@@ -23,8 +24,11 @@
         </div>
         <br/>
       </div>
-      <div class="row"> <!--span -->
-        <div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2">
+
+      <!-- book row-->
+      <div class="row col-sm-12 virt-table">
+        <!--bid span -->
+        <div class="virt-cell-3">
           <h2 class="text-center"><span class="label label-success">Compra</span></h2>
             <table class="table table-striped">
               <thead>
@@ -36,26 +40,17 @@
               <tbody name="buy-side">
               </tbody>
             </table>
-        </div><!--/span-->
+        </div>
+        <!--/bid span-->
 
-        <div class="col-lg-2 col-md-2"> <!-- span -->
-          <h2 class="text-center"></h2>
-            <table class="">
-              <thead>
-                <tr>
-                  <th class="text-left"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><h1></h1></td></tr>
-                <tr><td class="text-center">
-                  <div class="col-lg-2 col-md-2" style="background-image: url('http://th09.deviantart.net/fs70/PRE/f/2011/021/4/4/world_flags_by_atillawolf-d37oozl.jpg'); background-position: {{stock.flag_position}}/*-894px -336px*/; width: 150px; height: 85px; /*background-size=100%; bandeiras separadas*/"></div>
-                </td></tr>
-              </tbody>
-            </table>
-        </div><!--/span-->
-
-        <div class="col-lg-3 col-md-3">
+        <!-- flag span -->
+        <div id="flag" class="virt-cell-3 text-center"> 
+          <img src="http://placehold.it/150x85" />
+        </div>
+        <!--/flag span-->
+        
+        <!-- ask span-->
+        <div class="virt-cell-3">
           <h2 class="text-center"><span class="label label-warning">Venda</span></h2>
             <table class="table table-striped">
               <thead>
@@ -67,13 +62,15 @@
               <tbody name="sell-side">
               </tbody>
             </table>
-        </div><!--/span-->
-      
-      </div><!--/row-->
+        </div>
+        <!--/ask span-->
+  
+      </div>
+      <!--/book row-->
 
       <div class="row text-center">
-        <div style="width: 20%;" class="make-switch switch-large" data-on="success" data-off="warning" data-on-label="COMPRA" data-off-label="VENDA">
-          <input name="tipoOrdem" type="checkbox" checked>
+        <div style="min-width: 160px;" class="make-switch switch-large" data-on="success" data-off="warning" data-on-label=" COMPRA" data-off-label="VENDA ">
+          <input name="tipoOrdem" type="checkbox" checked />
         </div>
       </div>
       <br />
@@ -81,20 +78,20 @@
       <div class="row text-center">
         <form class="form-horizontal" role="form">
         <div class="form-group">
-          <label class="col-lg-2 col-md-2 control-label col-lg-offset-3">Quantidade</label>
-          <div class="col-lg-2 col-md-2">
+          <label class="col-xs-4 col-md-2 col-xs-offset-1 col-md-offset-3 control-label text-right">Quantidade</label>
+          <div class="col-xs-4 col-md-2">
             <input type="text" class="form-control text-right" id="formQtde" placeholder="" />
           </div>
         </div>
 	      <div class="form-group">
-          <label class="col-lg-2 col-md-2 control-label col-lg-offset-3">Preço</label>
-          <div class="col-lg-2 col-md-2">
+          <label class="col-xs-4 col-md-2 col-xs-offset-1 col-md-offset-3 control-label text-right">Preço</label>
+          <div class="col-xs-4 col-md-2">
             <input type="form-control" class="form-control text-right" id="formPreco" placeholder="" />
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-2 col-md-2 control-label col-lg-offset-3">Total</label>
-          <div class="col-lg-2 col-md-2">
+          <label class="col-xs-4 col-md-2 col-xs-offset-1 col-md-offset-3 control-label text-right">Total</label>
+          <div class="col-xs-4 col-md-2">
             <p class="form-control-static text-right" id="precoTotal"></p>
           </div>
         </div>
@@ -114,7 +111,7 @@
   	      <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Confirma Envio de Ordem</h4>
+              <h4 class="modal-title">Confirma Envio de Ordem</h4>
             </div>
             <div class="modal-body">
               <div class="container">
@@ -122,16 +119,16 @@
               		<h2 id="tipoOrdem" class="text-success">Compra</h2>
         	      </div>
     	          <div class="row">
-                  <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3"><h4>Preço:</h4></div>
-                  <div class="col-xs-4 col-md-3 col-lg-3 text-right"><h4></h4><p name="modalPreco"></p></div>
+                  <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Preço:</h4></div>
+                  <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalPreco"></p></div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3"><h4>Quantidade:</h4></div>
-                  <div class="col-xs-4 col-md-3 col-lg-3 text-right"><h4></h4><p name="modalQtde"></p></div>
+                  <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Quantidade:</h4></div>
+                  <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalQtde"></p></div>
     	          </div>
     	          <div class="row alert-info">
-		              <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3"><h4>Total:</h4></div>
-		              <div class="col-xs-4 col-md-3 col-lg-3 text-right"><h4></h4><p name="modalTotal">12345</p></div>
+		              <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Total:</h4></div>
+		              <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalTotal">12345</p></div>
     	          </div>
               </div>
               <div class="modal-footer">
@@ -141,7 +138,8 @@
 	          </div>
   	      </div><!-- /.modal-content -->
   	    </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+      </div>
+      <!-- /.modal -->
           
     </div><!-- -->
   </div><!-- container-->
