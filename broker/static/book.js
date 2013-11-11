@@ -52,16 +52,22 @@ function clearForm(){
 	return
 }
 
-$(document).ready(function() {
-
-  clearForm();
-
-	$.get("http://127.0.0.1:8000/api/get_book/"+decodeURIComponent(window.location.pathname).split('/')[3])
+/*TODO pq está dando refresh com varios itens? */
+function get_book(stock){
+	$.get("http://localhost:8000/api/get_book/"+stock+"/?size=5")
     .done(function(data){
   	/* generate the book */
 		generateBook($("tbody[name=buy-side]"), $("tbody[name=sell-side]"),	$("span[name=last]"), data)
   });
+  return
+}
 
+$(document).ready(function() {
+  var stock = decodeURIComponent(window.location.pathname).split('/')[3];
+  clearForm();
+  
+  get_book(stock);
+  
 	/* refresh the total price */
 	$(".form-control").on("keyup onpaste", function() {
 		validateFields();
@@ -94,7 +100,8 @@ $(document).ready(function() {
   /*Place the order*/
   $("button[name=confirmaOrdem]").click(function(){
   /*user e stock chumabada ticker = decodeURIComponent(window.location.pathname).split('/')[3] */
-    $.post( "http://127.0.0.1:8000/api/new_order/",{'user_id':3,'ticker_id':1, 'order_type':tipoOrdem,'order_qty':qty,'order_value': price})
+    /*TODO fix the host (pegar da sessao, cookie, etc)*/
+    $.post( "http://localhost:8000/api/new_order/",{'user_id':3,'ticker_id':1, 'order_type':tipoOrdem,'order_qty':qty,'order_value': price})
       .always(function(){
         $(".modal-body").html(modalFill(NaN,'/images/ajax-loader.gif'));
       })
@@ -104,8 +111,8 @@ $(document).ready(function() {
         $(".modal-body").html(modalFill('Ordem enviada com sucesso.',NaN,'success'));
         /* clear the form */
         clearForm();
-        /*alert(JSON.stringify(data));*/
-		    })
+        get_book(stock);
+	    })
       .fail(function(data) {
         /*TODO process the data from error not a fixed msg*/
         $(".modal-body").html(modalFill('Não foi possível enviar sua ordem<br/>Tente Novamente.',NaN,'danger'));
