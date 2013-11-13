@@ -29,4 +29,6 @@ $(document).ready(function() {
   }).hover( function() {
     $(this).toggleClass('hover');
   });
+  
+  
 });

@@ -10,7 +10,6 @@ urlpatterns = patterns('',
     # url(r'^CopaBroker/', include('CopaBroker.foo.urls')),
     url(r'^$', 'broker.views.home'),
     url(r'^book/(\w+)/$', 'broker.views.book'),
-    url(r'^profile/(\w+)$', 'broker.views.profile'),
+    url(r'^profile/$', 'broker.views.profile'),
     url(r'^login/$', 'broker.views.login_user')
-    
 )

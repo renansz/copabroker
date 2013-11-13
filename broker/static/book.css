@@ -1,20 +1,25 @@
-.virt-table{
-  display: table;
-  padding: 0 10%;
+#orderPanel{
+  padding: 5% 4%;
+  box-shadow: 1px 1px 10px #888888;
 }
 
-#flag{
-  vertical-align: middle !important;
+#pricesPanel{
+  padding: 5% 5%;
+  box-shadow: 1px 1px 10px #888888;
 }
 
-.virt-cell-3{
-  display: table-cell;
-  width: 30%;
-  margin: 0 0;
+#content{
+  background-image: url('/static/images/cream_dust.png');
 }
 
-.no-margin{
-  margin: 0 0;
+.orderSelected{
+  box-shadow: 1px 1px 10px #888888;
 }
 
+.buyOption{
+ background: rgba(92,184,92,0.3);
+}
 
+.sellOption{
+ background: rgba(240,173,78,0.4);
+}

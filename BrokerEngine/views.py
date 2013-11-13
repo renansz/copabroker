@@ -48,8 +48,10 @@ def get_book(request, ticker):
     response = {'ticker': stock.ticker, 'buy':clist, 'sell':vlist, 'last': 99.99}
     return JsonResponse(response)
 
-def get_user_portfolio(request, user_id):
-    user = User.objects.get(id=user_id)
+def get_user_portfolio(request):
+    #alterei aqui... ,esmo caso ali abaixo
+    #(ORIGINAL) user  = User.objects.get( id=request.POST['user_id'  ])
+    user = User.objects.get(pk=request.session.get(u'_auth_user_id'))
 
     portfolio = PortfolioItem.objects.filter(user=user).order_by('stock')
     response = [(p.stock.ticker, p.qty) for p in portfolio if p.qty != 0]
@@ -74,10 +76,12 @@ def get_order_status(request, order_id):
 def new_order(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'only POST method allowed'}, 405)
-    
     try:
-        user  = User.objects.get( id=request.POST['user_id'  ])
-        stock = Stock.objects.get( id=request.POST['ticker_id'])
+        #alterei aqui... nao sei o que seria mais correto fazer, mas dessa foram , garantimos que o user da session é quem faz o request e nao precisamos de mais uma consulta ao banco pra pegar o ticker
+        #(ORIGINAL) user  = User.objects.get( id=request.POST['user_id'  ])
+        #(ORIGINAL) user  = User.objects.get( id=request.POST['user_id'  ])
+        user  = User.objects.get(pk=request.session.get(u'_auth_user_id'))
+        stock = Stock.objects.get(ticker=request.POST['ticker'])
         
         tipo = request.POST['order_type']
         qty = int(request.POST['order_qty'])

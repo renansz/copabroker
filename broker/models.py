@@ -4,8 +4,9 @@ from BrokerEngine.models import User, Stock, Order, PortfolioItem, Historical
 
 class StockView(models.Model):
     ticker = models.ForeignKey(Stock)
+    ticker_name = models.CharField(max_length=10)
     group = models.CharField(max_length=1)
-    flag_position = models.CharField(max_length=16)
+    image = models.CharField(max_length=16)
 
     def __unicode__(self):
-        return "StockView(%s, %c, %s)" %(self.ticker, self.group, self.flag_position)
+        return "StockView(%s, %s, %c, %s)" %(self.ticker, self.ticker_name, self.group, self.image)

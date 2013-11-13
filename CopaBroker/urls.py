@@ -17,7 +17,8 @@ urlpatterns = patterns('',
     
     url(r'^api/get_all_tickers$', 'BrokerEngine.views.get_all_tickers'),
     url(r'^api/get_book/(\w+)/$', 'BrokerEngine.views.get_book'),
-    url(r'^api/get_user_portfolio/(?P<user_id>\d+)/$', 'BrokerEngine.views.get_user_portfolio'),
+    #alterei (ORIGINAL) url(r'^api/get_user_portfolio/(?P<user_id>\d+)/$', 'BrokerEngine.views.get_user_portfolio'),
+    url(r'^api/get_user_portfolio/$', 'BrokerEngine.views.get_user_portfolio'),
     url(r'^api/get_order_status/(?P<order_id>\d+)/$', 'BrokerEngine.views.get_order_status'),
     
     url(r'^api/new_order/$', 'BrokerEngine.views.new_order'),

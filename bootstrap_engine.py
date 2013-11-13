@@ -16,14 +16,14 @@ STOCKS = [
 ]
 
 STOCKSVIEWS = [
-    (1,"A","-894px -336px"),
-    (2,"A","-149px -420px"),
-    (3,"A","-894x -336px"),
-    (4,"A","-298px -588px"),
-    (5,"B","-1043px -420px"),
-    (6,"B","-149px -336px"),
-    (7,"B","-894px -252px"),
-    (8,"B","-1043px -336px")
+    (1,u"BR",u"A",u"http://placehold.it/150x85"),
+    (2,u"SP",u"A",u"http://placehold.it/150x85"),
+    (3,u"IT",u"A",u"http://placehold.it/150x85"),
+    (4,u"PT",u"A",u"http://placehold.it/150x85"),
+    (5,u"NZ",u"B",u"http://placehold.it/150x85"),
+    (6,u"NL",u"B",u"http://placehold.it/150x85"),
+    (7,u"IQ",u"B",u"http://placehold.it/150x85"),
+    (8,u"AT",u"B",u"http://placehold.it/150x85")
 ]
 
 # Lista de usuários: Pares de Nomes e saldos iniciais
@@ -47,23 +47,23 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("bootstrap")
 
 for user in USER_LIST:
-    u = User(name=user[0], saldo=user[1])
-    try:
-        u.save()
-        log.info(u"Adicionado Usuario: '%s'", u)
-    except:
-        log.error(u"Não pude adicionar usuário '%s'", u, exc_info=True)
+  u = User(name=user[0], saldo=user[1])
+  try:
+    u.save()
+    log.info(u"Adicionado Usuario: '%s'", u)
+  except:
+    log.error(u"Não pude adicionar usuário '%s'", u, exc_info=True)
 
 for stock in STOCKS:
-    s = Stock(ticker=stock[0], name=stock[1])
-    try:
-        s.save()
-        log.info(u"Adicionada Ação: '%s'", s)
-    except:
-        log.error(u"Não pude adicionar Ação '%s'", s, exc_info=True)
+  s = Stock(ticker=stock[0], name=stock[1])
+  try:
+    s.save()
+    log.info(u"Adicionada Ação: '%s'", s)
+  except:
+    log.error(u"Não pude adicionar Ação '%s'", s, exc_info=True)
 
 for stockview in STOCKSVIEWS:
-    s = StockView(ticker_id=stockview[0], group=stockview[1], flag_position=stockview[2])
+    s = StockView(ticker_id=stockview[0], ticker_name=stockview[1], group=stockview[2], image=stockview[3])
     try:
         s.save()
         log.info(u"Adicionada 'View' da Stock : '%s'", s)

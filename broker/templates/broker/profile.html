@@ -21,7 +21,7 @@
     </div>
 
 		<div class="container">
-			<h1 class="letterpress">Joao da Silva</h1>
+			<h1 class="letterpress">{{ user.name }}</h1>
 			<hr>
 
 			<div class="row">
@@ -75,7 +75,7 @@
 						</div>
 						<div class="col-lg-5 col-lg-offset-1 col-xs-6">
               <div class="list-group">
-                <a href="#" class="list-group-item active"><span class="badge" name="stocks">1.400,00</span>Total Aplicado</a>
+                <a class="list-group-item active"><span class="badge" name="stocksTotal"></span>Total Aplicado</a>
                   <table class="table table-striped">
   							    <thead>
 									    <tr>
@@ -89,8 +89,8 @@
                     <!-- stocks table -->
   							    </tbody>
 							    </table>
-                <a href="#" class="list-group-item"><span class="badge" name="available">14</span>Total Disponível</a>
-                <a href="#" class="list-group-item"><span class="badge" name="total">14</span>Total </a>
+                <a class="list-group-item"><span class="badge" name="available">{{ user.saldo | floatformat:2 }}</span>Total Disponível</a>
+                <a class="list-group-item"><span class="badge" name="total">14</span>Total</a>
               </div>
 						</div>
 					</div>

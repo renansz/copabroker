@@ -2,51 +2,72 @@
 
 {% block additional_styles %}
   <link href="/static/bootstrap-switch.css" rel="stylesheet">
+  <link href="/static/book.css" rel="stylesheet">
 {% endblock %}
 
 {% block title %} CopaBroker - Book {% endblock %}
 
 {% block content %}
   
-  <div class="container">
-    <div class="col-xs-12 col-sm-12">
+  <div class="row">
+    <div class="jumbotron" style="background-image: url('/static/images/field-bg.png'); color: #DDD;">
+      <h1 style="">Book de Ofertas</h1>
+      <p style="">Dê seu lance ou coloque sua opção à venda.</p>
+    </div>
+  </div>
+  <div class="container" >
+    <!-- menu -->
+    <div class="col-sm-3">
+      <div class="btn-group-vertical">
+        <button type="button" class="btn btn-default btn-lg" > Home </button>
+        <button type="button" class="btn btn-default btn-lg" > Perfil </button>
+        <button type="button" class="btn btn-default btn-lg" > Minha Carteira </button>
+        <button type="button" class="btn btn-default btn-lg" > Menu3 </button>
+        <button type="button" class="btn btn-default btn-lg" > Home4 </button>        
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-9">
       <p class="pull-right visible-xs">
         <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
       </p>
-      <div class="jumbotron" style="background-image: url('http://static4.depositphotos.com/1016204/341/i/950/depositphotos_3413733-Soccer-ball-standing-on-grass-field.jpg'); background-position: -50px -200px; color: #DDD; -moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">
-        <h1 style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Book de Ofertas</h1>
-        <p style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Dê seu lance ou coloque sua opção à venda.</p>
-      </div>
+    <!--/menu -->
   
       <!-- book row -->
-      <div name="bookPanel" class="row">
+      <div id="bookPanel" class="row">
         <!-- order span -->
-        <!-- botao venda/compra -->
-        <div class="col-sm-3">
-          <div class="row text-center">
-            <div style="min-width: 160px;" class="make-switch switch-medium" data-on="success" data-off="warning" data-on-label=" COMPRA" data-off-label="VENDA ">
-              <input name="tipoOrdem" type="checkbox" checked />
+        <!-- TODO verificar margim / padding aqui e deixar a tela do book com sombra tb. -->
+        <div class="col-sm-3 " id="orderPanel" >
+          <!-- botao venda/compra TODO fazer com que fique um esquema de fundo colorido para identificar compra e venda-->
+          <div class="row text-center" id="orderPanelContent">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-lg btn-success" style="width: 50%">
+                <input type="radio" name="compra" id="compra" checked>Compra</button>
+              </label>
+              <label class="btn btn-lg btn-warning" style="width: 50%">
+                <input type="radio" name="venda" id="venda">Venda</button>
+              </label>
             </div>
           </div>
+          <!-- /botao venda/compra -->
           <br />
           <!-- row -->
-          <div class="row text-center">
+          <div class="row">
             <form class="form-horizontal" role="form">
 	          <div class="form-group" name="formPreco">
-              <label class="col-xs-4 control-label text-left">Preço</label>
-              <div class="col-xs-6">
+              <label class="col-xs-4 control-label" style="text-align: left">Preço</label>
+              <div class="col-xs-6 col-sm-offset-2">
                 <input type="form-control" class="form-control text-right" id="formPreco" placeholder="" />
               </div>
             </div>
             <div class="form-group" name="formQtd">
-              <label class="col-xs-4 control-label text-right">Quantidade</label>
-              <div class="col-xs-6">
+              <label class="col-xs-4 control-label">Quantidade</label>
+              <div class="col-xs-6 col-sm-offset-2">
                 <input type="text" class="form-control text-right" id="formQtde" placeholder="" />
               </div>
             </div>
             <div class="form-group" name="formTotal">
-              <label class="col-xs-4 control-label text-right">Total</label>
-              <div class="col-xs-6 ">
+              <label class="col-xs-4 control-label" style="text-align: left">Total</label>
+              <div class="col-xs-6 col-sm-offset-2">
                 <p class="form-control-static text-right" id="precoTotal"></p>
               </div>
             </div>
@@ -56,7 +77,7 @@
           <!-- row -->
           <div class="row text-center">
 	          <!-- Button trigger modal -->
-	          <a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-primary btn-lg btn-success disabled">Enviar Ordem</a>
+	          <a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-default btn-lg disabled">Enviar Ordem</a>
           </div>
           <!--/row -->
           <!-- /order span -->
@@ -64,19 +85,19 @@
         
         <!-- book span -->
 
-        <div class="row col-sm-9">
+        <div class="row col-sm-8 col-sm-offset-1" id="pricesPanel" >
           <!-- stock info -->
           <div class="row text-center">
-            <div class="col-sm-5 text-right">
-              <img src="http://placehold.it/150x85" />
+            <div class="col-sm-6 text-right">
+              <h1 style="display: inline"><span name="ticker">{{ stock.name }}</span>&nbsp<span name="last" class="label label-default">0,00</span></h1><h3 style="display: inline" class="text-right"><br /><small>último negócio</small></h3>
             </div>
-            <div class="col-sm-4 text-left">
-              <h1 style="display: inline"><span name="ticker">{{ stock.name }}</span><span name="last" class="label label-default">0,00</span></h1><h3 style="display: inline" class="text-right"><br /><small>último negócio</small></h3>
+            <div class="col-sm-6 text-left">
+              <img src="{{ stock.image }}" />
             </div>
-            <br/>
           </div><!-- /stock info -->
+          <br/>
           <!--bid span -->
-          <div class="col-sm-5">
+          <div id="bidTable" class="col-sm-6">
             <h2 class="text-center"><span class="label label-success">Compra</span></h2>
             <table class="table table-striped">
               <thead>
@@ -92,7 +113,7 @@
           <!--/bid span-->
 
           <!-- ask span-->
-          <div class="col-sm-5 col-sm-offset-1">
+          <div id="askTable" class="col-sm-6">
             <h2 class="text-center"><span class="label label-warning">Venda</span></h2>
             <table class="table table-striped">
               <thead>
@@ -120,7 +141,7 @@
             <div class="modal-body">
               <div class="container">
                 <div class="row">
-              		<h2 id="tipoOrdem" class="text-success">Compra</h2>
+              		<h2 name="modalTipoOrdem" class="text-success"></h2>
         	      </div>
     	          <div class="row">
                   <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Preço:</h4></div>
@@ -132,7 +153,7 @@
     	          </div>
     	          <div class="row alert-info">
 		              <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Total:</h4></div>
-		              <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalTotal">12345</p></div>
+		              <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalTotal"></p></div>
     	          </div>
               </div>
               <div class="modal-footer">

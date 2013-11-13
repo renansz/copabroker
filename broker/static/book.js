@@ -1,5 +1,3 @@
-var qty = 0;
-var price = 0;
 var tipoOrdem = "";
 
 function getDecimalValue(s){
@@ -16,22 +14,67 @@ function validateFields(){
 //   $("#formPreco").val();
 }
 
-/*enable / disable "Comprar" btn */
-function toggleBtn(data){
-  if (data == "" || data == NaN){
-    $("#enviaOrdem").addClass('disabled');
-  }else{
-    $("#enviaOrdem").removeClass('disabled');
+/*Funcao para habilitar botao de enviar ordem*/
+function enableSendBtn(_preco){
+  /* enable send button by clickng buy or sell*/
+  if ( $("#orderPanel").css('background-color') != "transparent") { 
+    if (_preco == "" || _preco == NaN ) {
+      $("#enviaOrdem").addClass('disabled');
+    }else{
+      $("#enviaOrdem").removeClass('disabled');
+    }
   }
+}
+
+/*configura transicoes do painel buy and sell, e define o tipo de ordem*/
+/*TODO deixar mais inteligente a function ^^ */
+function toggleBuySell(){
+  /*Buy*/
+  $("label.btn-success").click(function(){
+    $("#orderPanel").addClass('buyOption');
+    $("#orderPanel").removeClass('sellOption');
+    $("#bidTable").addClass("orderSelected");
+    $("#askTable").removeClass("orderSelected");
+    $("#enviaOrdem").removeClass("btn-warning");
+    $("#enviaOrdem").addClass("btn-success");
+    tipoOrdem = 'C'
+    enableSendBtn($("#precoTotal").text());
+  });
+  /*Sell*/
+  $("label.btn-warning").click(function(){
+    $("#orderPanel").addClass('sellOption');
+    $("#orderPanel").removeClass('buyOption');
+    $("#askTable").addClass("orderSelected");
+    $("#bidTable").removeClass("orderSelected");
+    $("#enviaOrdem").removeClass("btn-success");
+    $("#enviaOrdem").addClass("btn-warning");
+    tipoOrdem = 'V'
+    enableSendBtn($("#precoTotal").text());
+  });
 }
 
 /*Função geradora da exibição do book*/
 function generateBook(buy,sell,last,prices){
+    /*limpa a tabela anterior*/
+    buy.html("");
+    sell.html("");
+    
     /*preenche a tabela do book*/
     for(i=0;i<prices['buy'].length;i++) buy.append('<tr><td class="text-center">'+prices["buy"][i][1]+'</td><td class="text-right">'+accounting.formatMoney(prices["buy"][i][0],"",2,".",",")+'</td></tr>');
     for(i=0;i<prices['sell'].length;i++) sell.append('<tr><td class="text-left">'+accounting.formatMoney(prices["sell"][i][0],"",2,".",",")+'</td><td class="text-center">'+prices["sell"][i][1]+'</td></tr>');
     /*TODO - requisicao de last value, está vindo 99.99 fixo*/
     last.text(accounting.formatMoney(prices["last"],"",2,".",","));
+    
+    /*heightEqualizer();*/
+}
+
+
+/*atualiza altura do painel de Ordens*/
+function heightEqualizer(){
+  $("#orderPanel").css('height', function(){
+    return $("#pricesPanel").css('height');
+  });
+  /*TODO Centralizar o conteudo do painel?*/
 }
 
 function modalFill(msg,img,type){
@@ -49,23 +92,30 @@ function clearForm(){
 	$("#formPreco").val("");
 	$("#formQtde").val("");
   $("#precoTotal").text("");
-	return
+  $("#orderPanel").removeClass('buyOption sellOption');
+  $(".orderSelected").removeClass('orderSelected');
+  $("#enviaOrdem").addClass('disabled');
 }
 
-/*TODO pq está dando refresh com varios itens? */
+
+/*get the book calling the API*/
 function get_book(stock){
 	$.get("http://localhost:8000/api/get_book/"+stock+"/?size=5")
     .done(function(data){
   	/* generate the book */
 		generateBook($("tbody[name=buy-side]"), $("tbody[name=sell-side]"),	$("span[name=last]"), data)
   });
-  return
 }
 
+/***************** Document Ready ***************/
+/*TODO Textura para venda e compra, melhor que a cor pura*/
 $(document).ready(function() {
+  /* TODO O ticker fica dependente da URL, nao sei se isso é muito bom*/
   var stock = decodeURIComponent(window.location.pathname).split('/')[3];
-  clearForm();
+  var modal = $(".modal-body").html();
   
+  /*alert(JSON.stringify($.cookie()));*/
+  clearForm();
   get_book(stock);
   
 	/* refresh the total price */
@@ -76,50 +126,44 @@ $(document).ready(function() {
 		} else {
 			$("#precoTotal").text(calcTotalPrice());
 		}
-	  toggleBtn($("#precoTotal").text());
+    enableSendBtn($("#precoTotal").text());
 	});
+
+  /*Buy and Sell buttons - Panel*/
+  toggleBuySell();
+
 
 	/* put the information on modal window */
-	$("#enviaOrdem").click(
-		function() {
-			if ($("input[name=tipoOrdem]").is(":checked")){
-        $("#tipoOrdem").text("Compra");
-        tipoOrdem = 'C';
-      }else{
-        $("#tipoOrdem").text("Venda");
-        tipoOrdem = 'V';
-      }
-      price = getDecimalValue($("#formPreco").val());
-      $("p[name=modalPreco]").text(price);
-      qty = $("#formQtde").val();
-			$("p[name=modalQtde]").text(qty);
+	$("#enviaOrdem").click(function() {
+      $(".modal-body").html(modal);
+      $("h2[name=modalTipoOrdem]").text(function(){return tipoOrdem == "C"? "Compra" : "Venda" });
+      $("p[name=modalPreco]").text(getDecimalValue($("#formPreco").val()));
+			$("p[name=modalQtde]").text($("#formQtde").val());
 			$("p[name=modalTotal]").text($("#precoTotal").text());
+			
+			
+      /*Place the order*/
+      $("button[name=confirmaOrdem]").click(function(){
+        $.post( "http://localhost:8000/api/new_order/",{'ticker':stock, 'order_type':tipoOrdem,'order_qty': $("p[name=modalQtde]").text(), 'order_value': $("p[name=modalPreco]").text()})
+          .always(function(){
+            $(".modal-body").html(modalFill(NaN,'/static/images/ajax-loader.gif'));
+          })
+          .done(function(data){
+	        /* generate the order */ 
+          /*TODO - Wait interface and auto-close & use the data to process the status*/
+            $(".modal-body").html(modalFill('Ordem enviada com sucesso.',NaN,'success'));
+            /* clear the form */
+            clearForm();
+            get_book(stock);
+          })
+          .fail(function(data) {
+            /*TODO process the data from error not a fixed msg*/
+            $(".modal-body").html(modalFill('Não foi possível enviar sua ordem<br/>Tente Novamente.',NaN,'danger'));
+            alert(JSON.stringify(data));
+          })
+      });
 	});
     
-
-  /*Place the order*/
-  $("button[name=confirmaOrdem]").click(function(){
-  /*user e stock chumabada ticker = decodeURIComponent(window.location.pathname).split('/')[3] */
-    /*TODO fix the host (pegar da sessao, cookie, etc)*/
-    $.post( "http://localhost:8000/api/new_order/",{'user_id':3,'ticker_id':1, 'order_type':tipoOrdem,'order_qty':qty,'order_value': price})
-      .always(function(){
-        $(".modal-body").html(modalFill(NaN,'/images/ajax-loader.gif'));
-      })
-      .done(function(data){
-  	  /* generate the order */ 
-      /*TODO - Wait interface and auto-close & use the data to process the status*/
-        $(".modal-body").html(modalFill('Ordem enviada com sucesso.',NaN,'success'));
-        /* clear the form */
-        clearForm();
-        get_book(stock);
-	    })
-      .fail(function(data) {
-        /*TODO process the data from error not a fixed msg*/
-        $(".modal-body").html(modalFill('Não foi possível enviar sua ordem<br/>Tente Novamente.',NaN,'danger'));
-        alert(JSON.stringify(data));
-      })
-  });
-
 
   /*Order validations*/
   /* auto-refresh*/
@@ -128,7 +172,4 @@ $(document).ready(function() {
 		$(this).val($(this).val().replace(/\./, ","));
 	});
 	
-
-
-
 });
