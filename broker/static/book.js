@@ -17,7 +17,7 @@ function validateFields(){
 /*Funcao para habilitar botao de enviar ordem*/
 function enableSendBtn(_preco){
   /* enable send button by clickng buy or sell*/
-  if ( $("#orderPanel").css('background-color') != "transparent") { 
+  if ($("#compra").hasClass('active') || $("#venda").hasClass('active')) { 
     if (_preco == "" || _preco == NaN ) {
       $("#enviaOrdem").addClass('disabled');
     }else{
@@ -38,6 +38,7 @@ function toggleBuySell(){
     $("#enviaOrdem").removeClass("btn-warning");
     $("#enviaOrdem").addClass("btn-success");
     tipoOrdem = 'C'
+    $("#compra").addClass('active')
     enableSendBtn($("#precoTotal").text());
   });
   /*Sell*/
@@ -49,6 +50,7 @@ function toggleBuySell(){
     $("#enviaOrdem").removeClass("btn-success");
     $("#enviaOrdem").addClass("btn-warning");
     tipoOrdem = 'V'
+    $("#venda").addClass('active')
     enableSendBtn($("#precoTotal").text());
   });
 }
@@ -136,7 +138,7 @@ $(document).ready(function() {
 	/* put the information on modal window */
 	$("#enviaOrdem").click(function() {
       $(".modal-body").html(modal);
-      $("h2[name=modalTipoOrdem]").text(function(){return tipoOrdem == "C"? "Compra" : "Venda" });
+      $("h2[name=modalTipoOrdem]").text(function(){return tipoOrdem == "C"? "Ordem de Compra" : "Ordem de Venda" });
       $("p[name=modalPreco]").text(getDecimalValue($("#formPreco").val()));
 			$("p[name=modalQtde]").text($("#formQtde").val());
 			$("p[name=modalTotal]").text($("#precoTotal").text());
@@ -150,11 +152,11 @@ $(document).ready(function() {
           })
           .done(function(data){
 	        /* generate the order */ 
-          /*TODO - Wait interface and auto-close & use the data to process the status*/
             $(".modal-body").html(modalFill('Ordem enviada com sucesso.',NaN,'success'));
             /* clear the form */
             clearForm();
             get_book(stock);
+            tipoOrdem = "";
           })
           .fail(function(data) {
             /*TODO process the data from error not a fixed msg*/
