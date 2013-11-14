@@ -7,31 +7,20 @@
 
 {% block title %} CopaBroker - Book {% endblock %}
 
-{% block content %}
-  
+{% block head %}
   <div class="row">
     <div class="jumbotron" style="background-image: url('/static/images/field-bg.png'); color: #DDD;">
       <h1 style="">Book de Ofertas</h1>
       <p style="">Dê seu lance ou coloque sua opção à venda.</p>
     </div>
   </div>
-  <div class="container" >
-    <!-- menu -->
-    <div class="col-sm-3">
-      <div class="btn-group-vertical">
-        <button type="button" class="btn btn-default btn-lg" > Home </button>
-        <button type="button" class="btn btn-default btn-lg" > Perfil </button>
-        <button type="button" class="btn btn-default btn-lg" > Minha Carteira </button>
-        <button type="button" class="btn btn-default btn-lg" > Menu3 </button>
-        <button type="button" class="btn btn-default btn-lg" > Home4 </button>        
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-9">
+{% endblock %}
+
+
+{% block content %}
       <p class="pull-right visible-xs">
-        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
       </p>
-    <!--/menu -->
-  
       <!-- book row -->
       <div id="bookPanel" class="row">
         <!-- order span -->
@@ -166,10 +155,10 @@
       </div>
       <!-- /.modal -->
           
-    </div><!-- -->
-  </div><!-- container-->
 
-{% endblock %}  
+{% endblock %}
+
+
 {% block scripts %}  
   <script type="text/javascript" src="/static/accounting.min.js"></script> 
   <script type="text/javascript" src="/static/book.js"></script>

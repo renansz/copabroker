@@ -11,6 +11,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
       <link href="/static/animate.min.css" rel="stylesheet" />
+      <link href="/static/base.css" rel="stylesheet" />
       <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
       {% block additional_styles %}{% endblock %}
     </head>
@@ -19,9 +20,27 @@
           <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/"> change/upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
       <div class="container" id="content">
-	    {% block content %}
-      <!-- Add your site or application content here -->
-      {% endblock %}
+      {% block head %} <!-- upper -->{% endblock %}
+      
+        <div class="container" >
+          <div class="col-sm-3">
+            {% block menu %}
+            <!-- menu -->
+            <h3></h3>
+            <div class="btn-group-vertical">
+              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker"> Home </a> 
+              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker/profile"> Perfil </a>
+              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker"> Minha Carteira </a>
+              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker"> Sobre CopaBroker </a>
+              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker/login"> Logout </a>
+            </div>
+            <!--/menu -->
+            {% endblock %}
+          </div>	    
+          <div class="col-xs-12 col-sm-9">
+    	      {% block content %}<!-- Add your site or application content here -->{% endblock %}
+          </div>
+        </div>
       </div>
 
 

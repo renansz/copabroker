@@ -2,114 +2,104 @@
 
 {% block title %} CopaBroker {% endblock %}
 
+{% block head %}
+  <div class="row">
+    <div class="jumbotron" style="background-image: url('/static/images/field-bg.png'); color: #DDD;">
+      <h1 style="">Book de Ofertas</h1>
+      <p style="">Dê seu lance ou coloque sua opção à venda.</p>
+    </div>
+  </div>
+{% endblock %}
+
 {% block content %}
 <style type="text/css">td a{color: black; }</style>
-<div class="container">
-  <div class="col-xs-12 col-sm-12">
-    <p class="pull-right visible-xs">
-      <button type="button" class="btn btn-primary btn-xs"
-        data-toggle="offcanvas">Toggle nav</button>
-    </p>
-    <div class="jumbotron"
-      style="background-image: url('http://static4.depositphotos.com/1016204/341/i/950/depositphotos_3413733-Soccer-ball-standing-on-grass-field.jpg'); background-position: -50px -200px; color: #DDD; -moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">
-      <h1
-        style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Copa
-        Broker</h1>
-      <p
-        style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: 'FlipH';">Compre
-        e venda as chances de seu time ganhar.</p>
-    </div>
+		<h1 class="letterpress">{{ user.name }}</h1>
+		<hr>
+		
 
-		<div class="container">
-			<h1 class="letterpress">{{ user.name }}</h1>
-			<hr>
-
-			<div class="row">
-				<div class="col-lg-10 col-xs-10">
-					<div class="page-header">
-						<a href="/users/bootstraptor" class="pull-right"><img
-							class="img-circle"
-							src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
-						<h3>bootstraptor</h3>
+		<div class="row">
+			
+			<div class="col-xs-12 col-sm-12">
+	      
+				<div class="row">
+					<div class="col-lg-3 col-xs-3">
+		    		
+		    		<!-- foto -->
+		    		<div id="carbonads-container">
+		    			<div class="carbonad">
+		    				<img src="//placehold.it/150x200" />
+		    			</div>
+		    		</div>
+				    <hr>
+		    		<!-- /foto -->
+		
+		    		<!-- user stats -->
+						<strong>Posição no Ranking: 12345</strong>
+						<hr>
+						<small>{% now "j \d\e F , Y" %}</small> <br> <br> <br>
+						<br> <strong>Stats</strong>
+						<hr>
+						<table>
+							<tbody>
+								<tr>
+									<td><small>Plys</small></td>
+									<td><span class="badge">34</span></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><small>Votes</small></td>
+									<td><span class="badge badge-success">334</span></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><small>Forks</small></td>
+									<td><span class="badge">4</span></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><small>Views</small></td>
+									<td><span class="badge badge-info">5234</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-
-					<div class="row">
-						<div class="col-lg-3 col-xs-3">
-							<strong>Posição no Ranking: 12345</strong>
-							<hr>
-							<small>{% now "j \d\e F , Y" %}</small> <br> <br> <br>
-							<br> <strong>Stats</strong>
-							<hr>
-							<table>
-								<tbody>
-									<tr>
-										<td><small>Plys</small></td>
-										<td><span class="badge">34</span></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><small>Votes</small></td>
-										<td><span class="badge badge-success">334</span></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><small>Forks</small></td>
-										<td><span class="badge">4</span></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><small>Views</small></td>
-										<td><span class="badge badge-info">5234</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="col-lg-5 col-lg-offset-1 col-xs-6">
-              <div class="list-group">
-                <a class="list-group-item active"><span class="badge" name="stocksTotal"></span>Total Aplicado</a>
-                  <table class="table table-striped">
-  							    <thead>
-									    <tr>
-										    <th class="text-left">Papel</th>
-										    <th class="text-center">Preço</th>
-										    <th class="text-center">Quantidade</th>
-										    <th class="text-right">Valor Atual</th>
-									    </tr>
-								    </thead>
-								    <tbody name="myStocks">
-                    <!-- stocks table -->
-  							    </tbody>
-							    </table>
-                <a class="list-group-item"><span class="badge" name="available">{{ user.saldo | floatformat:2 }}</span>Total Disponível</a>
-                <a class="list-group-item"><span class="badge" name="total">14</span>Total</a>
-              </div>
-						</div>
+	    		<!-- /user stats -->
+	    		
+	    		<!-- posicao -->
+					<div class="col-sm-7 col-sm-offset-1">
+            <div class="list-group">
+              <a class="list-group-item active"><span class="badge" name="stocksTotal"></span>Total Aplicado</a>
+                <table class="table table-striped">
+							    <thead>
+								    <tr>
+									    <th class="text-left">Papel</th>
+									    <th class="text-center">Preço</th>
+									    <th class="text-center">Quantidade</th>
+									    <th class="text-right">Valor Atual</th>
+								    </tr>
+							    </thead>
+							    <tbody name="myStocks">
+                  <!-- stocks table -->
+							    </tbody>
+						    </table>
+              <a class="list-group-item"><span class="badge" name="available">{{ user.saldo | floatformat:2 }}</span>Total Disponível</a>
+              <a class="list-group-item"><span class="badge" name="total">14</span>Total</a>
+            </div>
 					</div>
 				</div>
-
-				<div class="col-lg-2 col-xs-2">
-					<div id="carbonads-container">
-						<div class="carbonad">
-							<img src="//placehold.it/150x200">
-						</div>
-					</div>
-					<hr>
-				</div>
-			</div>
-		</div>
-
-  </div>
-</div><!-- container-->
-
+    		<!-- /posicao -->
+				
+			</div><!-- /row -->
+		</div><!-- /row -->
 {% endblock %} 
 
 {% block scripts %}
