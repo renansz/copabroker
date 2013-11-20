@@ -32,7 +32,7 @@ def home(request):
         groups[stock.group].append(_dict)
     return render_to_response("broker/broker.html",{'groups': groups})
 
-
+@login_required
 def book(request,ticker):
     """View que renderiza o book de ofertas de um determinado ativo"""
     #TODO Repliquei o ticker na tabela stockview para nao ter q consultar o banco novamente, se precisar do nome tem que gravar em algum lugar, ou fazer a referencia cruzada mesmo.
@@ -45,7 +45,7 @@ def book(request,ticker):
     stock = {'name': s.ticker_name, 'ticker': s.ticker_name, 'image': s.image}
     return render_to_response("broker/book.html",{'stock': stock})
 
-
+@login_required
 def profile(request):
     #precisa pegar o portfolio do usuario em questao
     #na teoria seria a chamada /api/get_user_portfolio/ID e já calcular o total 
@@ -56,7 +56,7 @@ def profile(request):
     except:
         #TODO criar uma página de erro com o objeto abaixo
         u = brokerUser(id= 0, name= u"Joe Doe", saldo= 0)
-    return render_to_response("broker/profile.html",{'user': u,'stocks':[{'name':'BRA2014','qty':150,'price':49.87},{'name':'NIG2014','qty':350,'price':3.13},{'name':'JAP2014','qty':500,'price':2.13},{'name':'EUA2014','qty':1000,'price':9.02},{'name':'GER2014','qty':10,'price':41.05},{'name':'ALG2014','qty':3500,'price':5.13},{'name':'HOL2014','qty':150,'price':31.57},{'name':'FRA2014','qty':800,'price':13.13}]})
+    return render_to_response("broker/profile.html",{'user': u})
 
 def login_user(request):
   logout(request)

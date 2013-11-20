@@ -102,7 +102,7 @@ function clearForm(){
 
 /*get the book calling the API*/
 function get_book(stock){
-	$.get("http://localhost:8000/api/get_book/"+stock+"/?size=5")
+	$.get("/api/get_book/"+stock+"/?size=5")
     .done(function(data){
   	/* generate the book */
 		generateBook($("tbody[name=buy-side]"), $("tbody[name=sell-side]"),	$("span[name=last]"), data)
@@ -146,9 +146,9 @@ $(document).ready(function() {
 			
       /*Place the order*/
       $("button[name=confirmaOrdem]").click(function(){
-        $.post( "http://localhost:8000/api/new_order/",{'ticker':stock, 'order_type':tipoOrdem,'order_qty': $("p[name=modalQtde]").text(), 'order_value': $("p[name=modalPreco]").text()})
+        $.post( "/api/new_order/",{'ticker':stock, 'order_type':tipoOrdem,'order_qty': $("p[name=modalQtde]").text(), 'order_value': $("p[name=modalPreco]").text()})
           .always(function(){
-            $(".modal-body").html(modalFill(NaN,'/static/images/ajax-loader.gif'));
+            $(".modal-body").html(modalFill(NaN,'../../../static/images/ajax-loader.gif'));
           })
           .done(function(data){
 	        /* generate the order */ 

@@ -1,9 +1,63 @@
 body{
+/*  background-image: url('/static/images/cream_dust.png');*/
+/*  background-image: url('/static/images/green_bg.jpg');*/
+/*  background-image: url('/static/images/depositphotos_3694648-Artificial-Grass-Field-Top-View-Texture.jpg');*/
+}
+
+.jumbotron{
+/*  background-image: url('/static/images/green_website_background_pattern.jpg');*/
+}
+
+#top-menu{
+  height: 55px;
+}
+
+#sb-menu{
+ position: fixed;
+ top: 57px;
+}
+
+#sb-menu .btn {
+ background-color: rgb(44, 62, 80);
+ color: #FFF;
+ font-size: 1.1em;
+ text-align: left;
+}
+
+#sb-menu .btn:hover{
+ background-color: rgb(88, 124, 160);
+ font-size: 1.1em;
+ text-align: left;
+}
+
+#main-row{
+  min-height: 700px;
+  padding-bottom: 60px; /* this needs to be bigger than footer height*/
+}
+
+#footer{
+  margin-top: -60px; /* negative value of footer height */
+  height: 60px;
+  background-color: rgb(44, 62, 80);
+  position: relative;
+}
+
+#content{
+/*  background-image: url('/static/images/green_bg.jpg');*/
   background-image: url('/static/images/cream_dust.png');
+  box-shadow: 1px 0px 10px #888888;
 }
 
+.navbar-default {
+  background-color: rgb(44, 62, 80);
+  border-color: rgb(32, 45, 59);
 
-#content.container{
-  background: #FFF;
 }
 
+#menuHome{
+ color: rgb(255,255,255);
+}
+
+#navbar-main ul li a{
+  color: rgb(255,255,255);
+}

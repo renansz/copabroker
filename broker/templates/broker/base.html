@@ -9,7 +9,7 @@
       <title>{% block title %}{% endblock %}</title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" /> 
       <link href="/static/animate.min.css" rel="stylesheet" />
       <link href="/static/base.css" rel="stylesheet" />
       <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -19,30 +19,62 @@
       <!--[if lt IE 7]>
           <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/"> change/upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
-      <div class="container" id="content">
-      {% block head %} <!-- upper -->{% endblock %}
-      
-        <div class="container" >
-          <div class="col-sm-3">
-            {% block menu %}
-            <!-- menu -->
-            <h3></h3>
-            <div class="btn-group-vertical">
-              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker"> Home </a> 
-              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker/profile"> Perfil </a>
-              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker"> Minha Carteira </a>
-              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker"> Sobre </a>
-              <a type="button" class="btn btn-default btn-lg" href="http://localhost:8000/broker/login"> Logout </a>
+      {% block topmenu %}
+      <div class="row">
+        <nav id="top-menu" class="navbar navbar-default" role="navigation" >
+          <div class="container">
+            <div class="navbar-header">
+              <a href="/broker" class="navbar-brand" id="menuHome">CopaBroker</a>
             </div>
-            <!--/menu -->
-            {% endblock %}
-          </div>	    
-          <div class="col-xs-12 col-sm-9">
-    	      {% block content %}<!-- Add your site or application content here -->{% endblock %}
+            <div class="navbar-collapse collapse" id="navbar-main">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="/broker">Broker</a>
+                </li>
+                <li>
+                  <a href="/broker/profile">Minha Carteira</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/broker/sobre" >Quem somos</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </nav>
       </div>
+      {% endblock %}
 
+      {% block menu %}
+      <div id="sb-menu" class="container"  >
+        <!-- menu -->
+        <h3></h3>
+        <div class="btn-group-vertical">
+          <a type="button" class="btn btn-lg" href="/broker"> Home </a> 
+          <a type="button" class="btn btn-lg" href="/broker/profile"> Minha Carteira </a>
+          <a type="button" class="btn btn-lg" href="/broker"> Sobre </a>
+          <a type="button" class="btn btn-lg" href="/broker/login"> Logout </a>
+        </div>
+        <!--/menu -->
+      </div>
+      {% endblock %}
+        
+      <div class="row" id="main-row">
+          <div class="container" id="content">
+          {% block head %} <!-- upper -->{% endblock %}
+            <div class="container" >
+              <div class="col-xs-12 col-sm-12">
+                {% block content %}<!-- Add your site or application content here -->{% endblock %}
+              </div>
+            </div>
+            <div class="row" style="height: 30px;"></div>
+          </div>
+      </div>
+      <div class="row clearfix" style="height: 30px; "></div>
+      {% block footer %}
+      <div class="row" id="footer">
+        
+      </div>
+      {% endblock %}
 
       <script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.10.2.min.js"><\/script>')</script>
       <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>

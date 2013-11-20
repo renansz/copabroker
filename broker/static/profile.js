@@ -42,7 +42,7 @@ function generatePortfolio(data){
 
 $(document).ready(function() {
 
-	$.get( "http://localhost:8000/api/get_user_portfolio/")
+	$.get( "/api/get_user_portfolio/")
     .done(function(data){
     /* generate the book */
     generatePortfolio(data);

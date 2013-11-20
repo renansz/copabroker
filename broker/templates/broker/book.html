@@ -9,7 +9,7 @@
 
 {% block head %}
   <div class="row">
-    <div class="jumbotron" style="background-image: url('/static/images/field-bg.png'); color: #DDD;">
+    <div class="jumbotron"">
       <h1 style="">Book de Ofertas</h1>
       <p style="">Dê seu lance ou coloque sua opção à venda.</p>
     </div>
@@ -24,9 +24,7 @@
       <!-- book row -->
       <div id="bookPanel" class="row">
         <!-- order span -->
-        <!-- TODO verificar margim / padding aqui e deixar a tela do book com sombra tb. -->
         <div class="col-sm-3 " id="orderPanel" >
-          <!-- botao venda/compra TODO fazer com que fique um esquema de fundo colorido para identificar compra e venda-->
           <div class="row text-center" id="orderPanelContent">
             <div class="btn-group" data-toggle="buttons">
               <label id="compra" class="btn btn-lg btn-success" style="width: 50%">
@@ -42,7 +40,7 @@
           <!-- row -->
           <div class="row">
             <form class="form-horizontal" role="form">
-	          <div class="form-group" name="formPreco">
+            <div class="form-group" name="formPreco">
               <label class="col-xs-4 control-label" style="text-align: left">Preço</label>
               <div class="col-xs-6 col-sm-offset-2">
                 <input type="form-control" class="form-control text-right" id="formPreco" placeholder="" />
@@ -65,8 +63,8 @@
           <br />
           <!-- row -->
           <div class="row text-center">
-	          <!-- Button trigger modal -->
-	          <a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-default btn-lg disabled">Enviar Ordem</a>
+            <!-- Button trigger modal -->
+            <a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-default btn-lg disabled">Enviar Ordem</a>
           </div>
           <!--/row -->
           <!-- /order span -->
@@ -121,8 +119,8 @@
       
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  	    <div class="modal-dialog">
-  	      <div class="modal-content">
+        <div class="modal-dialog">
+          <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h4 class="modal-title">Confirma Envio de Ordem</h4>
@@ -130,37 +128,34 @@
             <div class="modal-body">
               <div class="container">
                 <div class="row">
-              		<h2 name="modalTipoOrdem" class="text-success"></h2>
-        	      </div>
-    	          <div class="row">
+                  <h2 name="modalTipoOrdem" class="text-success"></h2>
+                </div>
+                <div class="row">
                   <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Preço:</h4></div>
                   <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalPreco"></p></div>
                 </div>
                 <div class="row">
                   <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Quantidade:</h4></div>
                   <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalQtde"></p></div>
-    	          </div>
-    	          <div class="row alert-info">
-		              <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Total:</h4></div>
-		              <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalTotal"></p></div>
-    	          </div>
+                </div>
+                <div class="row alert-info">
+                  <div class="col-xs-6 col-xs-offset-1 col-md-3 col-md-offset-3"><h4>Total:</h4></div>
+                  <div class="col-xs-4 col-md-3 text-right"><h4></h4><p name="modalTotal"></p></div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" name="confirmaOrdem" class="btn btn-primary">Confirmar</button>
               </div>
-	          </div>
-  	      </div><!-- /.modal-content -->
-  	    </div><!-- /.modal-dialog -->
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
-          
-
 {% endblock %}
 
 
 {% block scripts %}  
   <script type="text/javascript" src="/static/accounting.min.js"></script> 
   <script type="text/javascript" src="/static/book.js"></script>
-  <script type="text/javascript" src="/static/bootstrap-switch.min.js"></script> 
 {% endblock %}
