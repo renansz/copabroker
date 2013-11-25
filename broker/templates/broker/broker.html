@@ -40,15 +40,16 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>#</th>
+              <th></th>
               <th>Seleção</th>
               <th class="text-right">Preço</th>
             </tr>
           </thead>
           <tbody>
+       {% load static %}
 			 {% for team in teams %}
             <tr name="team" class="team">
-              <td>{% cycle 1 2 3 4 %}</td>
+              <td name="flag"><img src="{% get_static_prefix %}flags/{{ team.ticker }}-sm.png" %}"/></td>
               <td name="name"><a href="book/{{team.ticker}}">{{ team.name }}</a></td>
               <td name="price" class="text-right">{{ team.value | floatformat:2 }}</td>
             </tr>			
@@ -69,6 +70,7 @@
 					<thead>
 						<tr>
 							<th>#</th>
+							<th></th>
 							<th>Seleção</th>
 							<th class="text-right">Preço</th>
 						</tr>
