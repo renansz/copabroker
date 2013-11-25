@@ -1,67 +1,81 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-f = open(r'groups_fixture.json','w')
+f = open(r'stockview_fixture.json','w')
+g = open(r'stock_fixture.json','w')
 
 #GRUPO A
-teams = [("URU2014",    "Uruguai",      "A"),
-         ("MEX2014",    "México",       "A"),
-         ("AFR2014",    "África do Sul","A"),
-         ("FRA2014",    "França",       "A")]
+teams = [("BRA",    "Brazil","A"),
+         ("JAP",    "Japan", "A"),
+         ("CHI",    "Chile", "A"),
+         ("HOL",    "Netherlands",       "A")]
 #GRUPO B
-teams.append(("ARG2014",    "Argentina",        "B"))
-teams.append(("CRS2014",    "Coréia do Sul",    "B"))
-teams.append(("GRE2014",    "Grécia",           "B"))
-teams.append(("NIG2014",    "Nigéria",          "B"))
+teams.append(("ARG",    "Argentina",        "B"))
+teams.append(("IRA",    "Iran",    "B"))
+teams.append(("ECU",    "Ecuador",           "B"))
+teams.append(("ITA",    "Italy",          "B"))
 #GRUPO C
-teams.append(("EUA2014",    "Estados Unidos",   "C"))
-teams.append(("ING2014",    "Inglaterra",       "C"))
-teams.append(("ESL2014",    "Eslovênia",        "C"))
-teams.append(("AGL2014",    "Argélia",          "C"))
+teams.append(("COL",    "Colombia",   "C"))
+teams.append(("KOR",    "Korea Republic",       "C"))
+teams.append(("CIV",    "Côte d'Ivoire",        "C"))
+teams.append(("ENG",    "England",          "C"))
 #GRUPO D
-teams.append(("GER2014",    "Alemanha",     "D"))
-teams.append(("GAN2014",    "Gana",         "D"))
-teams.append(("AUS2014",    "Austrália",    "D"))
-teams.append(("SRV2014",    "Sérvia",       "D"))
+teams.append(("URU",    "Uruguay",     "D"))
+teams.append(("AUS",    "Australia",         "D"))
+teams.append(("GHA",    "Ghana",    "D"))
+teams.append(("POR",    "Portugal",       "D"))
 #GRUPO E
-teams.append(("HOL2014",    "Holanda",      "E"))
-teams.append(("JAP2014",    "Japão",        "E"))
-teams.append(("DIN2014",    "Dinamarca",    "E"))
-teams.append(("CAM2014",    "Camarões",     "E"))
+teams.append(("SPA",    "Spain",      "E"))
+teams.append(("USA",    "United States of America",        "E"))
+teams.append(("ALG",    "Algeria",    "E"))
+teams.append(("GRE",    "Greece",     "E"))
 #GRUPO F
-teams.append(("PAR2014",    "Paraguai",         "F"))
-teams.append(("ESQ2014",    "Eslováquia",       "F"))
-teams.append(("NVZ2014",    "Nova Zelândia",    "F"))
-teams.append(("ITA2014",    "Itália",           "F"))
+teams.append(("GER",    "Germany",         "F"))
+teams.append(("MEX",    "Mexico",       "F"))
+teams.append(("NIG",    "Nigeria",    "F"))
+teams.append(("BOS",    "Bosnia-Herzegovina",           "F"))
 #GRUPO G
-teams.append(("BRA2014",    "Brasil",           "G"))
-teams.append(("POR2014",    "Portugal",         "G"))
-teams.append(("CDM2014",    "Costa do Marfim",  "G"))
-teams.append(("CRN2014",    "Coréia do Norte",  "G"))
+teams.append(("BEL",    "Belgium",           "G"))
+teams.append(("COS",    "Costa Rica",         "G"))
+teams.append(("CAM",    "Cameroon",  "G"))
+teams.append(("CRO",    "Croatia",  "G"))
 #GRUPO H
-teams.append(("ESP2014",    "Espanha",      "H"))
-teams.append(("CHI2014",    "Chile",        "H"))
-teams.append(("SUI2014",    "Suiça",        "H"))
-teams.append(("HON2014",    "Honduras",     "H"))
+teams.append(("SWI",    "Switzerland",      "H"))
+teams.append(("HON",    "Honduras",        "H"))
+teams.append(("FRA",    "France",        "H"))
+teams.append(("RUS",    "Russia",     "H"))
 
 id = 1
 f.write("[")
+g.write('[')
 for ticker,team,group in teams:
     f.write("""  {
-    "model": "broker.stock",
+    "model": "broker.stockview",
+    "pk": %d,
+    "fields": {
+          "ticker": "%d",
+          "ticker_name": "%s",
+          "country_name": "%s",
+          "group": "%s"
+    }
+  },
+  """ % (id,id,ticker,team,group))
+    g.write("""  {
+    "model": "BrokerEngine.stock",
     "pk": %d,
     "fields": {
           "ticker": "%s",
-          "country_name": "%s",
-          "group": "%s",
-          "fair_value": %5.2f
+          "name": "%s"
     }
   },
-  """ % (id,ticker,team,group,3.13))
+  """ % (id,ticker,team))  
     id += 1
-
 f.seek(-4,1)
-
 f.write("]")
 f.close()
+
+g.seek(-4,1)
+g.write("]")
+g.close()
+
 print "Groups Fixture created successfully"

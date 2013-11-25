@@ -4,7 +4,8 @@ from BrokerEngine.models import User, Stock, Order, PortfolioItem, Historical
 
 class StockView(models.Model):
     ticker = models.ForeignKey(Stock)
-    ticker_name = models.CharField(max_length=10)
+    ticker_name = models.CharField(max_length=3)
+    country_name = models.CharField(max_length=30)
     group = models.CharField(max_length=1)
     image = models.CharField(max_length=16)
 

@@ -21,7 +21,7 @@ import datetime
 def home(request):
     """View da homepage - exibe todos os times divididos em grupo ou rankeados (selecao do usuario) """
     g = [g for g in StockView.objects.prefetch_related()]
-    groups = {'A':[],'B':[]}
+    groups = {'A':[],'B':[],'C':[],'D':[],'E':[],'F':[],'G':[],'H':[]}
     for stock in g:
         _dict = {'name':stock.ticker.name, 'ticker':stock.ticker.ticker, 'group':stock.group, 'image':stock.image}
         try:
