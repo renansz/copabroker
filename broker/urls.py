@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'CopaBroker.views.home', name='home'),
     # url(r'^CopaBroker/', include('CopaBroker.foo.urls')),
-    url(r'^$', 'broker.views.home'),
+    url(r'^$', 'broker.views.grupos'),
     url(r'^noticias/$', 'broker.views.noticias'),
     url(r'^grupos/$', 'broker.views.grupos'),
     url(r'^painel/(\w+)/$', 'broker.views.painel'),
