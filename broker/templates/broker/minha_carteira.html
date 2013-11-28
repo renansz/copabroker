@@ -1,0 +1,69 @@
+{% extends "broker/core.html" %}
+
+{% block additional_styles %}
+<style>
+  tr.team{
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+
+{% block title %}<h3><i class="icon-money"></i>Minha Carteira</h3>{% endblock %}
+{% block subtitle %}<h5>Resumo de suas posições e recursos disponíveis</h5>{% endblock %}
+
+{% block content %}
+
+    <div class="row-fluid">
+      
+      <div class="span10">
+          <!-- posicao -->
+          <div class="span7 offset1">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <h3 style="display: inline">Total Aplicado</h3><span class="badge inverse pull-right" name="stocksTotal"><h4 name="stocksTotal" style="color:white;"></h4></span></a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th class="text-left">Papel</th>
+                          <th class="text-center">Preço</th>
+                          <th class="text-center">Quantidade</th>
+                          <th class="text-right">Valor Atual</th>
+                        </tr>
+                      </thead>
+                      <tbody name="myStocks">
+                      <!-- stocks table -->
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="list-group-item"><h3 style="display: inline">Total Disponível</h3><span class="badge inverse pull-right" name="available"><h4 name="available" style="color:white;">{{ user.saldo | floatformat:2 }}</h4></span></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="list-group-item"><h3 style="display: inline">Total</h3><span class="badge inverse pull-right" name="total"><h4 name="total" style="color:white;"></h4></span></a>
+                  </td>  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /posicao -->
+    </div><!-- /span -->
+  </div><!-- /row -->
+{% endblock %} 
+
+{% block scripts %}
+  <script type="text/javascript" src="/static/profile.js"></script>
+  <script type="text/javascript" src="/static/accounting.min.js"></script> 
+{% endblock %}

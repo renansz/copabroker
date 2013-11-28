@@ -18,8 +18,8 @@ import traceback
 import datetime
 
 @login_required
-def home(request):
-    """View da homepage - exibe todos os times divididos em grupo ou rankeados (selecao do usuario) """
+def grupos(request):
+    """exibe todos os times divididos em grupo ou rankeados (selecao do usuario) """
     g = [g for g in StockView.objects.prefetch_related()]
     groups = {'A':[],'B':[],'C':[],'D':[],'E':[],'F':[],'G':[],'H':[]}
     for stock in g:
@@ -30,7 +30,7 @@ def home(request):
         except:
             _dict['value'] = 0.00
         groups[stock.group].append(_dict)
-    return render_to_response("broker/broker.html",{'groups': groups})
+    return render_to_response("broker/grupos.html",{'groups': groups})
 
 @login_required
 def book(request,ticker):
@@ -46,7 +46,21 @@ def book(request,ticker):
     return render_to_response("broker/book.html",{'stock': stock})
 
 @login_required
-def profile(request):
+def painel(request,ticker):
+    """View que renderiza o book de ofertas de um determinado ativo"""
+    #TODO Repliquei o ticker na tabela stockview para nao ter q consultar o banco novamente, se precisar do nome tem que gravar em algum lugar, ou fazer a referencia cruzada mesmo.
+    #TODO testar a logica ticker_id ticker_name .. etc
+    try:
+        s = StockView.objects.get(ticker_name = ticker)
+    except:
+        #TODO criar uma página de erro com o objeto abaixo
+        s = StockView(ticker_id= 0, ticker_name= None, group= '#', image= 'http://placehold.it/150x85')
+    stock = {'name': s.ticker_name, 'ticker': s.ticker_name, 'image': s.image}
+    return render_to_response("broker/painel.html",{'stock': stock})
+
+
+@login_required
+def minha_carteira(request):
     #precisa pegar o portfolio do usuario em questao
     #na teoria seria a chamada /api/get_user_portfolio/ID e já calcular o total 
     #acredito que seria util já termos o preço do ativo na resposta da api ou devemos fazer uma segunda query mesmo?
@@ -56,7 +70,7 @@ def profile(request):
     except:
         #TODO criar uma página de erro com o objeto abaixo
         u = brokerUser(id= 0, name= u"Joe Doe", saldo= 0)
-    return render_to_response("broker/profile.html",{'user': u})
+    return render_to_response("broker/minha_carteira.html",{'user': u})
 
 def login_user(request):
   logout(request)
@@ -67,7 +81,7 @@ def login_user(request):
     user = authenticate(username=username, password=password)
     if user and user.is_active:
       login(request, user)
-      return HttpResponseRedirect('/broker/')
+      return HttpResponseRedirect('/broker/grupos')
   return render_to_response('login.html', context_instance=RequestContext(request))
   
 #TODO escreevr a funcao para testar cookies  

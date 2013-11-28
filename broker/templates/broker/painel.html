@@ -1,0 +1,150 @@
+{% extends "broker/core.html" %}
+
+{% block additional_styles %}
+  <link href="/static/bootstrap-switch.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}<h3><i class="icon-signal"></i>Negociação</h3>{% endblock %}
+{% block subtitle %}<h5>Painel de negociação papéis</h5>{% endblock %}
+
+{% block content %}
+      <!-- book row -->
+      <div id="bookPanel" class="row">
+        <!-- order span -->
+        <div class="span3 " id="orderPanel" >
+          <div class="padded" id="orderPanelContent">
+            <div class="btn-group" data-toggle="buttons">
+              <label id="compra" class="btn btn-lg btn-success" style="width: 50%">
+                <input type="radio" name="compra"  />Compra
+              </label>
+              <label id="venda" class="btn btn-lg btn-warning" style="width: 50%">
+                <input type="radio" name="venda"  />Venda
+              </label>
+            </div>
+          </div>
+          <!-- /botao venda/compra -->
+          <br />
+          <!-- row -->
+          <div class="padded">
+            <form class="form-horizontal text-left">
+              <div class="padded">
+                <div class="control-group" name="formPreco">
+                  <label class="control-label" style="text-align: right">Preço</label>
+                  <div class="controls">
+                    <input type="form-control" class="form-control text-right" id="formPreco" placeholder="" />
+                  </div>
+                </div>
+                <div class="control-group" name="formQtd">
+                  <label class="control-label">Quantidade</label>
+                  <div class="controls">
+                    <input type="form-control" class="form-control text-right" id="formQtde" placeholder="" />
+                  </div>
+                </div>
+                <div class="control-group" name="formTotal">
+                  <label class="control-label" >Total</label>
+                  <div class="controls">
+                    <p class="form-control-static text-right" id="precoTotal"></p>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div> <!-- /row -->
+          <br />
+          <!-- row -->
+          <div class="row text-center">
+            <!-- Button trigger modal -->
+            <a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-default btn-lg disabled">Enviar Ordem</a>
+          </div>
+          <!--/row -->
+          <!-- /order span -->
+        </div>  
+        
+        <!-- book span -->
+
+        <div class="row span8 offset1" id="pricesPanel" >
+          <!-- stock info -->
+          <div class="row text-center">
+            <div class="span6 text-right">
+              <h1 style="display: inline"><span name="ticker">{{ stock.name }}</span>&nbsp<span name="last" class="label label-default">0,00</span></h1><h3 style="display: inline" class="text-right"><br /><small>último negócio</small></h3>
+            </div>
+            <div class="span6 text-left">
+              <img src="{{ stock.image }}" />
+            </div>
+          </div><!-- /stock info -->
+          <br/>
+          <!--bid span -->
+          <div id="bidTable" class="span6">
+            <h2 class="text-center"><span class="label label-success">Compra</span></h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">Quantidade</th>
+                  <th class="text-right">Preço</th>
+                </tr>
+              </thead>
+              <tbody name="buy-side">
+              </tbody>
+            </table>
+          </div>
+          <!--/bid span-->
+
+          <!-- ask span-->
+          <div id="askTable" class="span6">
+            <h2 class="text-center"><span class="label label-warning">Venda</span></h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-left">Preço</th>
+                  <th class="text-center">Quantidade</th>
+                </tr>
+              </thead>
+              <tbody name="sell-side">
+              </tbody>
+            </table>
+          </div><!--/ask span-->
+        </div><!--/book span -->
+      </div><!--/book row-->
+   
+      
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Confirma Envio de Ordem</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <h2 name="modalTipoOrdem" class="text-success"></h2>
+                </div>
+                <div class="row">
+                  <div class="span3 offset3"><h4>Preço:</h4></div>
+                  <div class="span3 text-right"><h4></h4><p name="modalPreco"></p></div>
+                </div>
+                <div class="row">
+                  <div class="span3 offset3"><h4>Quantidade:</h4></div>
+                  <div class="span3 text-right"><h4></h4><p name="modalQtde"></p></div>
+                </div>
+                <div class="row alert-info">
+                  <div class="span3 offset3"><h4>Total:</h4></div>
+                  <div class="span3 text-right"><h4></h4><p name="modalTotal"></p></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" name="confirmaOrdem" class="btn btn-primary">Confirmar</button>
+              </div>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+{% endblock %}
+
+{% block scripts %}  
+  <script type="text/javascript" src="/static/accounting.min.js"></script> 
+  <script type="text/javascript" src="/static/book.js"></script>
+{% endblock %}
