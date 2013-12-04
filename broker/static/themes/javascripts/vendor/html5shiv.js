@@ -1,2 +1,142 @@
 /*! iepp v2.2 MIT/GPL2 @jon_neal & afarkas */
-(function(e,t){function y(e){var t=-1;while(++t<s)e.createElement(i[t])}if(!window.attachEvent||!t.createStyleSheet||!function(){var e=document.createElement("div");return e.innerHTML="<elem></elem>",e.childNodes.length!==1}())return;e.iepp=e.iepp||{};var n=e.iepp,r=n.html5elements||"abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|subline|summary|time|video",i=r.split("|"),s=i.length,o=new RegExp("(^|\\s)("+r+")","gi"),u=new RegExp("<(/*)("+r+")","gi"),a=/^\s*[\{\}]\s*$/,f=new RegExp("(^|[^\\n]*?\\s)("+r+")([^\\n]*)({[\\n\\w\\W]*?})","gi"),l=/@media +(?![Print|All])[^{]+\{([^{}]+\{[^{}]+\})+[^}]+\}/g,c=t.createDocumentFragment(),h=t.documentElement,p=t.getElementsByTagName("script")[0].parentNode,d=t.createElement("body"),v=t.createElement("style"),m=/print|all/,g;n.getCSS=function(e,t){try{if(e+""===undefined)return""}catch(r){return""}var i=-1,s=e.length,o,u,a=[];while(++i<s){o=e[i];if(o.disabled)continue;t=o.media||t,m.test(t)&&(u=o.cssText,t!="print"&&(u=u.replace(l,"")),a.push(n.getCSS(o.imports,t),u)),t="all"}return a.join("")},n.parseCSS=function(e){var t=[],n;while((n=f.exec(e))!=null)t.push(((a.exec(n[1])?"\n":n[1])+n[2]+n[3]).replace(o,"$1.iepp-$2")+n[4]);return t.join("\n")},n.writeHTML=function(){var e=-1;g=g||t.body;while(++e<s){var n=t.getElementsByTagName(i[e]),r=n.length,o=-1;while(++o<r)n[o].className.indexOf("iepp-")<0&&(n[o].className+=" iepp-"+i[e])}c.appendChild(g),h.appendChild(d),d.className=g.className,d.id=g.id,d.innerHTML=g.innerHTML.replace(u,"<$1font")},n._beforePrint=function(){if(n.disablePP)return;v.styleSheet.cssText=n.parseCSS(n.getCSS(t.styleSheets,"all")),n.writeHTML()},n.restoreHTML=function(){if(n.disablePP)return;d.swapNode(g)},n._afterPrint=function(){n.restoreHTML(),v.styleSheet.cssText=""},y(t),y(c);if(n.disablePP)return;p.insertBefore(v,p.firstChild),v.media="print",v.className="iepp-printshim",e.attachEvent("onbeforeprint",n._beforePrint),e.attachEvent("onafterprint",n._afterPrint)})(this,document);
+
+(function(win, doc) {
+	//taken from modernizr
+	if ( !window.attachEvent || !doc.createStyleSheet || !(function(){ var elem = document.createElement("div"); elem.innerHTML = "<elem></elem>"; return elem.childNodes.length !== 1; })()) {
+		return;
+	}
+	win.iepp = win.iepp || {};
+	var iepp = win.iepp,
+		elems = iepp.html5elements || 'abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|subline|summary|time|video',
+		elemsArr = elems.split('|'),
+		elemsArrLen = elemsArr.length,
+		elemRegExp = new RegExp('(^|\\s)('+elems+')', 'gi'), 
+		tagRegExp = new RegExp('<(\/*)('+elems+')', 'gi'),
+		filterReg = /^\s*[\{\}]\s*$/,
+		ruleRegExp = new RegExp('(^|[^\\n]*?\\s)('+elems+')([^\\n]*)({[\\n\\w\\W]*?})', 'gi'),
+		nonPrintMedias = /@media +(?![Print|All])[^{]+\{([^{}]+\{[^{}]+\})+[^}]+\}/g,
+		docFrag = doc.createDocumentFragment(),
+		html = doc.documentElement,
+		head = doc.getElementsByTagName('script')[0].parentNode,
+		bodyElem = doc.createElement('body'),
+		styleElem = doc.createElement('style'),
+		printMedias = /print|all/,
+		body;
+
+	function shim(doc) {
+		var a = -1;
+		while (++a < elemsArrLen) {
+			// Use createElement so IE allows HTML5-named elements in a document
+			doc.createElement(elemsArr[a]);
+		}
+	}
+	
+	iepp.getCSS = function(styleSheetList, mediaType) {
+		try {
+			if(styleSheetList+'' === undefined){
+				return '';
+			}
+		} catch(er){
+			return '';
+		}
+		var a = -1,
+			len = styleSheetList.length,
+			styleSheet,
+			cssText,
+			cssTextArr = [];
+		while (++a < len) {
+			styleSheet = styleSheetList[a];
+			//currently no test for disabled/alternate stylesheets
+			if(styleSheet.disabled){
+				continue;
+			}
+			mediaType = styleSheet.media || mediaType;
+			// Get css from all non-screen stylesheets and their imports
+			if (printMedias.test(mediaType)){
+				cssText = styleSheet.cssText;
+				if(mediaType != 'print'){
+					cssText = cssText.replace(nonPrintMedias, "");
+				}
+				cssTextArr.push(iepp.getCSS(styleSheet.imports, mediaType), cssText);
+			}
+			//reset mediaType to all with every new *not imported* stylesheet
+			mediaType = 'all';
+		}
+		return cssTextArr.join('');
+	};
+	
+	iepp.parseCSS = function(cssText) {
+		var cssTextArr = [],
+			rule;
+		while ((rule = ruleRegExp.exec(cssText)) != null){
+			// Replace all html5 element references with iepp substitute classnames
+			cssTextArr.push(( (filterReg.exec(rule[1]) ? '\n' : rule[1]) + rule[2] + rule[3]).replace(elemRegExp, '$1.iepp-$2') + rule[4]);
+		}
+		return cssTextArr.join('\n');
+	};
+	
+	iepp.writeHTML = function() {
+		var a = -1;
+		body = body || doc.body;
+		while (++a < elemsArrLen) {
+			var nodeList = doc.getElementsByTagName(elemsArr[a]),
+				nodeListLen = nodeList.length,
+				b = -1;
+			while (++b < nodeListLen){
+				if (nodeList[b].className.indexOf('iepp-') < 0){
+					// Append iepp substitute classnames to all html5 elements
+					nodeList[b].className += ' iepp-'+elemsArr[a];
+				}
+			}
+				
+		}
+		docFrag.appendChild(body);
+		html.appendChild(bodyElem);
+		// Write iepp substitute print-safe document
+		bodyElem.className = body.className;
+		bodyElem.id = body.id;
+		// Replace HTML5 elements with <font> which is print-safe and shouldn't conflict since it isn't part of html5
+		bodyElem.innerHTML = body.innerHTML.replace(tagRegExp, '<$1font');
+	};
+	
+	iepp._beforePrint = function() {
+		if(iepp.disablePP){return;}
+		// Write iepp custom print CSS
+		styleElem.styleSheet.cssText = iepp.parseCSS(iepp.getCSS(doc.styleSheets, 'all'));
+		iepp.writeHTML();
+	};
+	
+	iepp.restoreHTML = function() {
+		if(iepp.disablePP){return;}
+		// Undo everything done in onbeforeprint
+		bodyElem.swapNode(body);
+	};
+	
+	iepp._afterPrint = function() {
+		// Undo everything done in onbeforeprint
+		iepp.restoreHTML();
+		styleElem.styleSheet.cssText = '';
+	};
+	
+	// Shim the document and iepp fragment
+	shim(doc);
+	shim(docFrag);
+	
+	//
+	if(iepp.disablePP){
+		return;
+	}
+	
+	// Add iepp custom print style element
+	head.insertBefore(styleElem, head.firstChild);
+	styleElem.media = 'print';
+	styleElem.className = 'iepp-printshim';
+	win.attachEvent(
+		'onbeforeprint',
+		iepp._beforePrint
+	);
+	win.attachEvent(
+		'onafterprint',
+		iepp._afterPrint
+	);
+})(this, document);

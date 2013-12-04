@@ -13,13 +13,13 @@
 
 {% block content %}
     <div class="row">
-      <div class="span10 offset1 text-left">
-        <div class="row-fluid">
-          <div class="span2 offset10">
-            <button type="button" id="btn-group" class="btn btn-inverse btn-large">
+      <div class="col-sm-10 text-left">
+        <div class="row text-right">
+          <div class="col-sm-12">
+            <button type="button" id="btn-group" class="btn btn-lg btn-default">
               <i class="icon-th"></i>
             </button>
-            <button type="button" id="btn-ranking" class="btn btn-inverse btn-large">
+            <button type="button" id="btn-ranking" class="btn btn-lg btn-default">
               <i class="icon-align-justify"></i>
             </button>
           </div>
@@ -28,12 +28,12 @@
     </div>
 
     <div id="content-1" class="row">
-      <div class="span10 offset1">
-        <div class="row-fluid">
+      <div class="col-sm-10">
+        <div class="row">
           <!-- content-1 -->
           <style type="text/css">td a{color: black; }</style>
           {% for group,teams in groups.iteritems %}
-          <div class="span3"><!--/groupTable-->
+          <div class="col-sm-3"><!--/groupTable-->
             <h2>Grupo {{ group }}</h2>
             <table class="table table-striped">
               <thead>
@@ -62,7 +62,7 @@
       <!--/content -->
     <!--content-2-->
     <div id="content-2" class="row">
-      <div class="span4 offset4">
+      <div class="col-sm-4 col-sm-offset-4">
         <h2>Ranking de Cotações</h2>
         <table class="table table-striped">
           <thead>

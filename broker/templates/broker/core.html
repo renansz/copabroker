@@ -22,74 +22,106 @@
   <![endif]-->
 
   <script src="/static/themes/javascripts/application.js" type="text/javascript"></script>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
 
 {% block additional_styles %}{% endblock %}
 
 <body>
-<div class="navbar navbar-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <a class="brand" href="#">Core Admin</a>
-      <!-- the new toggle buttons -->
-      <ul class="nav pull-right">
-        <li class="toggle-primary-sidebar hidden-desktop" data-toggle="collapse" data-target=".nav-collapse-primary"><button type="button" class="btn btn-navbar"><i class="icon-th-list"></i></button></li>
-        <li class="hidden-desktop" data-toggle="collapse" data-target=".nav-collapse-top"><button type="button" class="btn btn-navbar"><i class="icon-align-justify"></i></button></li>
-      </ul>
-          <div class="nav-collapse nav-collapse-top collapse">
-            <ul class="nav full pull-right">
-              <li class="dropdown user-avatar">
-                <!-- the dropdown has a custom user-avatar class, this is the small avatar with the badge -->
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span>
-                    <img class="menu-avatar" src="/static/themes/images/avatars/avatar1.jpg" /> <span>John Smith <i class="icon-caret-down"></i></span>
-                    <span class="badge badge-dark-red">5</span>
-                  </span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- the first element is the one with the big avatar, add a with-image class to it -->
-                  <li class="with-image">
-                    <div class="avatar">
-                      <img src="/static/themes/images/avatars/avatar1.jpg" />
-                    </div>
-                    <span>John Smith</span>
-                  </li>
-                  <li class="divider"></li>
-                  <li><a href="#"><i class="icon-user"></i> <span>Profile</span></a></li>
-                  <li><a href="#"><i class="icon-cog"></i> <span>Settings</span></a></li>
-                  <li><a href="#"><i class="icon-envelope"></i> <span>Messages</span> <span class="label label-dark-red pull-right">5</span></a></li>
-                  <li><a href="#"><i class="icon-off"></i> <span>Logout</span></a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="navbar-search pull-right" />
-              <input type="text" class="search-query animated" placeholder="Search" />
-              <i class="icon-search"></i>
-            </form>
-            <ul class="nav pull-right">
-              <li class="active"><a href="#" title="Go home"><i class="icon-home"></i> Home</a></li>
-              <li><a href="#" title="Manage users"><i class="icon-user"></i> Users</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Some link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-    </div>
+
+<nav class="navbar navbar-default navbar-inverse navbar-static-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Core Admin</a>
+
+    
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-primary">
+          <span class="sr-only">Toggle Side Navigation</span>
+          <i class="icon-th-list"></i>
+        </button>
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-top">
+          <span class="sr-only">Toggle Top Navigation</span>
+          <i class="icon-align-justify"></i>
+        </button>
+    
   </div>
-</div><div class="sidebar-background">
+
+  
+      
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-collapse-top">
+        <div class="navbar-right">
+
+          <ul class="nav navbar-nav navbar-left">
+            <li class="cdrop active"><a href="#">Link</a></li>
+
+            <li class="cdrop"><a href="#">Link</a></li>
+
+            <li class="dropdown cdrop">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="search-query animated" placeholder="Search">
+              <i class="icon-search"></i>
+            </div>
+          </form>
+
+          <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle dropdown-avatar" data-toggle="dropdown">
+              <span>
+                <img class="menu-avatar" src="/static/themes/images/avatars/avatar1.jpg" /> <span>John Smith <i class="icon-caret-down"></i></span>
+                <span class="badge badge-dark-red">5</span>
+              </span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <!-- the first element is the one with the big avatar, add a with-image class to it -->
+
+                <li class="with-image">
+                  <div class="avatar">
+                    <img src="../../images/avatars/avatar1.jpg" />
+                  </div>
+                  <span>John Smith</span>
+                </li>
+
+                <li class="divider"></li>
+
+                <li><a href="#"><i class="icon-user"></i> <span>Profile</span></a></li>
+                <li><a href="#"><i class="icon-cog"></i> <span>Settings</span></a></li>
+                <li><a href="#"><i class="icon-envelope"></i> <span>Messages</span> <span class="label label-dark-red pull-right">5</span></a></li>
+                <li><a href="#"><i class="icon-off"></i> <span>Logout</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+      </div><!-- /.navbar-collapse -->
+</nav>
+
+
+
+
+<div class="sidebar-background">
   <div class="primary-sidebar-background"></div>
 </div>
 
 <div class="primary-sidebar">
 
   <!-- Main nav -->
-  <ul class="nav nav-collapse collapse nav-collapse-primary">
+  <ul class="nav navbar-collapse collapse navbar-collapse-primary">
     <li class="active">
       <span class="glow"></span>
       <a href="/broker/noticias">
@@ -97,49 +129,49 @@
           <span>Notícias</span>
       </a>
     </li>
-    <li class="">
+    <li class="dark-nav">
       <span class="glow"></span>
       <a href="/broker/grupos">
           <i class="icon-th icon-2x"></i>
           <span>Grupos e Seleções</span>
       </a>
     </li>
-    <li class="">
+    <li class="dark-nav">
       <span class="glow"></span>
       <a href="/broker/painel/BRA">
           <i class="icon-signal icon-2x"></i>
           <span>Negociação</span>
       </a>
     </li>
-    <li class="">
+    <li class="dark-nav">
       <span class="glow"></span>
       <a href="/broker/minhas_ordens">
           <i class="icon-list icon-2x"></i>
           <span>Minhas Ordens</span>
       </a>
     </li>
-    <li class="">
+    <li class="dark-nav">
       <span class="glow"></span>
       <a href="/broker/minha_carteira">
           <i class="icon-money icon-2x"></i>
           <span>Minha Carteira</span>
       </a>
     </li>
-    <li class="">
+    <li class="dark-nav">
       <span class="glow"></span>
       <a href="/broker/fundamentalista">
           <i class="icon-search icon-2x"></i>
           <span>Fundamentos</span>
       </a>
     </li>
-    <li class="">
+    <li class="dark-nav">
       <span class="glow"></span>
       <a href="/broker/tutorial">
           <i class="icon-film icon-2x"></i>
           <span>Tutorial</span>
       </a>
     </li>
-    <li class="">
+    <li class="dark-nav">
       <span class="glow"></span>
       <a href="/broker/cadastro">
           <i class="icon-wrench icon-2x"></i>
@@ -148,39 +180,45 @@
     </li>
   </ul>
 
-  <div class="hidden-tablet hidden-phone">
+  <div class="hidden-sm hidden-xs">
+    <div class="text-center" style="margin-top: 60px">
+      <div class="easy-pie-chart-percent" style="display: inline-block" data-percent="89"><span>89%</span></div>
+      <div style="padding-top: 20px"><b>CPU Usage</b></div>
+    </div>
 
-    <hr class="divider" style="margin-top: 60px" />
+    <hr class="divider" style="margin-top: 60px">
 
     <div class="sparkline-box side">
 
       <div class="sparkline-row">
         <h4 class="gray"><span>Orders</span> 847</h4>
-        <div class="sparkline big" data-color="gray"><!--25,3,28,4,15,4,17,25,15,12,10,8--></div>
+        <div class="sparkline big" data-color="gray"><!--16,7,23,13,12,11,15,4,19,18,4,24--></div>
       </div>
 
-      <hr class="divider" />
+      <hr class="divider">
       <div class="sparkline-row">
         <h4 class="dark-green"><span>Income</span> $43.330</h4>
-        <div class="sparkline big" data-color="darkGreen"><!--5,10,24,20,27,21,24,9,12,14,26,23--></div>
+        <div class="sparkline big" data-color="darkGreen"><!--6,3,24,25,27,29,14,26,20,8,12,20--></div>
       </div>
 
-      <hr class="divider" />
+      <hr class="divider">
       <div class="sparkline-row">
         <h4 class="blue"><span>Reviews</span> 223</h4>
-        <div class="sparkline big" data-color="blue"><!--15,12,11,14,6,24,17,4,20,29,9,11--></div>
+        <div class="sparkline big" data-color="blue"><!--11,19,20,20,5,18,11,6,16,20,26,11--></div>
       </div>
 
-      <hr class="divider" />
+      <hr class="divider">
     </div>
   </div>
+
+
 </div>
 
+
+
 <div class="main-content">
-
-
-  <div class="container-fluid">
-    <div class="row-fluid">
+  <div class="container">
+    <div class="row">
 
       <div class="area-top clearfix">
         <div class="pull-left header">
@@ -197,7 +235,7 @@
     </div>
   </div>
 
-<div class="container-fluid padded">
+<div class="container padded">
 {% block content %}
 
 

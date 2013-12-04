@@ -13,54 +13,111 @@
 
 {% block content %}
 
-    <div class="row-fluid">
-      
-      <div class="span10">
-          <!-- posicao -->
-          <div class="span7 offset1">
-            <table class="table table-striped">
+    <div class="row">
+
+      <!-- box1 -->
+      <div class="col-sm-6">
+        <div class="box">
+          <div class="box-header">
+            <span class="title">Meus Investimentos</span>
+          </div>
+          <div class="box-content">
+            <table class="table table-normal">
               <thead>
                 <tr>
-                  <th>
-                    <h3 style="display: inline">Total Aplicado</h3><span class="badge inverse pull-right" name="stocksTotal"><h4 name="stocksTotal" style="color:white;"></h4></span></a>
-                  </th>
+                  <td class="text-center">Papel</td>
+                  <td class="text-center">Preço</td>
+                  <td class="text-center">Quantidade</td>
+                  <td class="text-right">Valor Atual</td>
+                  <td class="text-right">Oscilação</td>
                 </tr>
               </thead>
-              <tbody>
+
+              <tbody name="myStocks">
+                    <!-- stocks table -->
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <div class="row">
+              <div class="col-sm-8 text-left"><h4>Total Investido</h4></div>
+              <div class="col-sm-4 text-right"><h4><span name="stocksTotal" class="label label-blue" style="white-space: nowrap"></span></h4></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /box1 -->
+      
+      <!-- box2 -->
+      <div class="col-sm-6">
+        <div class="box">
+          <div class="box-header">
+            <span class="title">Resumo Financeiro</span>
+          </div>
+          <div class="box-content">
+            <table class="table table-normal">
+              <thead>
                 <tr>
-                  <td>
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th class="text-left">Papel</th>
-                          <th class="text-center">Preço</th>
-                          <th class="text-center">Quantidade</th>
-                          <th class="text-right">Valor Atual</th>
-                        </tr>
-                      </thead>
-                      <tbody name="myStocks">
-                      <!-- stocks table -->
-                      </tbody>
-                    </table>
-                  </td>
+                  <td style="text-align: left">Origem</td>
+                  <td style="text-align: right">Valor</td>
+                </tr>
+              </thead>
+
+              <tbody name="myFinance">
+                <tr>
+                  <td>Capital Investido</td>
+                  <td class="text-right" name="stocksTotal"></td>
                 </tr>
                 <tr>
-                  <td>
-                    <a class="list-group-item"><h3 style="display: inline">Total Disponível</h3><span class="badge inverse pull-right" name="available"><h4 name="available" style="color:white;">{{ user.saldo | floatformat:2 }}</h4></span></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a class="list-group-item"><h3 style="display: inline">Total</h3><span class="badge inverse pull-right" name="total"><h4 name="total" style="color:white;"></h4></span></a>
-                  </td>  
+                  <td>Saldo Disponível</td>
+                  <td class="text-right" name="available">{{ user.saldo | floatformat:2 }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <div class="table-footer">
+            <div class="row">
+              <div class="col-sm-8 text-left"><h4>Total Geral</h4></div>
+              <div class="col-sm-4 text-right"><h4><span class="label label-blue" name="total">{{ user.saldo | floatformat:2 }}</span></h4></div>
+            </div>
+          </div>
         </div>
-        <!-- /posicao -->
-    </div><!-- /span -->
-  </div><!-- /row -->
+      </div>
+      <!-- /box2 -->
+    </div>
+    <!-- /row1 -->
+
+    <!-- row2 -->
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- box3 -->
+        <div class="box">
+          <div class="box-header"><span class="title">Evolução da Carteira</span></div>
+          <div class="box-content padded">
+            <div class="row separate-sections">
+
+              <div class="col-md-4">
+                <div class="spark-pie"></div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="spark-composite"></div>
+              </div>
+
+              <div class="col-md-2 separate-sections text-center">
+                <div class="sparkline big"><!--19,8,10,24,14,24,23,20,9,5,10,12--></div>
+                <div class="sparkline big" data-color="blue"><!--6,13,25,29,9,19,26,13,24,28,20,29--></div>
+                <div class="sparkline big" data-color="orange"><!--10,6,17,26,27,26,19,3,11,6,5,11--></div>
+                <div class="sparkline big" data-color="green"><!--6,21,27,16,17,9,22,28,17,21,10,9--></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /box3 -->
+    </div>
+    <!-- row2 -->
+  </div>
 {% endblock %} 
 
 {% block scripts %}

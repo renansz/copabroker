@@ -84,9 +84,24 @@ def login_user(request):
       return HttpResponseRedirect('/broker/grupos')
   return render_to_response('login.html', context_instance=RequestContext(request))
   
-#TODO escreevr a funcao para testar cookies  
+#TODO views que ainda faltam
+def cadastro(request):
+  pass
   
-#TODO escreevr a funcao de logout
+def tutorial(request):
+  pass
+
+def fundamentos(request):
+  pass
+
+def minhas_ordens(request):
+  pass
+
+def noticias(request):
+  pass
+
+
+#TODO escrever a funcao de logout
 def logout(request):
     try:
         del request.session['member_id']
