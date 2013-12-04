@@ -31,6 +31,7 @@ function enableSendBtn(_preco){
 function toggleBuySell(){
   /*Buy*/
   $("label.btn-success").click(function(){
+    $("#enviaOrdem").css("color","white");
     $("#orderPanel").addClass('buyOption');
     $("#orderPanel").removeClass('sellOption');
     $("#bidTable").addClass("orderSelected");
@@ -43,6 +44,7 @@ function toggleBuySell(){
   });
   /*Sell*/
   $("label.btn-warning").click(function(){
+    $("#enviaOrdem").css("color","white");
     $("#orderPanel").addClass('sellOption');
     $("#orderPanel").removeClass('buyOption');
     $("#askTable").addClass("orderSelected");
@@ -57,13 +59,23 @@ function toggleBuySell(){
 
 /*Função geradora da exibição do book*/
 function generateBook(buy,sell,last,prices){
+    var iterator = 0;
     /*limpa a tabela anterior*/
     buy.html("");
     sell.html("");
-    
-    /*preenche a tabela do book*/
-    for(i=0;i<prices['buy'].length;i++) buy.append('<tr><td class="text-center">'+prices["buy"][i][1]+'</td><td class="text-right">'+accounting.formatMoney(prices["buy"][i][0],"",2,".",",")+'</td></tr>');
-    for(i=0;i<prices['sell'].length;i++) sell.append('<tr><td class="text-left">'+accounting.formatMoney(prices["sell"][i][0],"",2,".",",")+'</td><td class="text-center">'+prices["sell"][i][1]+'</td></tr>');
+    /*preenche a tabela do book com 5 linhas cada. Caso não tenha 5 ask ou bid, deixa linhas em branco*/
+    iterator = Math.max(prices['buy'].length,prices['sell'].length,5);
+    for(i=0;i<iterator;i++) {
+      if (prices["buy"][i])
+        buy.append('<tr><td class="text-center">'+prices["buy"][i][1]+'</td><td class="text-center">'+accounting.formatMoney(prices["buy"][i][0],"",2,".",",")+'</td></tr>');
+      else
+        buy.append('<tr><td class="text-center">&nbsp</td><td class="text-center"></td></tr>');
+      if (prices["sell"][i])
+        sell.append('<tr><td class="text-center">'+accounting.formatMoney(prices["sell"][i][0],"",2,".",",")+'</td><td class="text-center">'+prices["sell"][i][1]+'</td></tr>');
+      else
+        sell.append('<tr><td class="text-center">&nbsp</td><td class="text-center"></td></tr>');
+    }
+    for(i=0;i<iterator;i++) 
     /*TODO - requisicao de last value, está vindo 99.99 fixo*/
     last.text(accounting.formatMoney(prices["last"],"",2,".",","));
     
@@ -91,8 +103,9 @@ function modalFill(msg,img,type){
 
 /* clear the form */
 function clearForm(){
-	$("#formPreco").val("");
-	$("#formQtde").val("");
+  $("#formPreco").val("");
+  $("#formQtde").val("");
+  $("#enviarOrdem").css("color","gray");
   $("#precoTotal").text("");
   $("#orderPanel").removeClass('buyOption sellOption');
   $(".orderSelected").removeClass('orderSelected');

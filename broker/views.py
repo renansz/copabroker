@@ -42,7 +42,7 @@ def book(request,ticker):
     except:
         #TODO criar uma página de erro com o objeto abaixo
         s = StockView(ticker_id= 0, ticker_name= None, group= '#', image= 'http://placehold.it/150x85')
-    stock = {'name': s.ticker_name, 'ticker': s.ticker_name, 'image': s.image}
+    stock = {'name': s.country_name, 'ticker': s.ticker_name, 'image': s.image}
     return render_to_response("broker/book.html",{'stock': stock})
 
 @login_required
@@ -55,7 +55,7 @@ def painel(request,ticker):
     except:
         #TODO criar uma página de erro com o objeto abaixo
         s = StockView(ticker_id= 0, ticker_name= None, group= '#', image= 'http://placehold.it/150x85')
-    stock = {'name': s.ticker_name, 'ticker': s.ticker_name, 'image': s.image}
+    stock = {'name': s.country_name, 'ticker': s.ticker_name, 'image': s.image}
     return render_to_response("broker/painel.html",{'stock': stock})
 
 
@@ -76,30 +76,29 @@ def login_user(request):
   logout(request)
   username = password = ''
   if request.POST:
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
+    user = authenticate(username=request.POST['username'], password=request.POST['password'])
     if user and user.is_active:
       login(request, user)
       return HttpResponseRedirect('/broker/grupos')
-  return render_to_response('login.html', context_instance=RequestContext(request))
+    else:
+      return render_to_response('login.html',{'error':'Usuario ou senha inválidos'}, context_instance=RequestContext(request))
+  return render_to_response('login.html',context_instance=RequestContext(request))
   
 #TODO views que ainda faltam
-def cadastro(request):
-  pass
-  
-def tutorial(request):
-  pass
-
-def fundamentos(request):
+def noticias(request):
   pass
 
 def minhas_ordens(request):
   pass
 
-def noticias(request):
+def fundamentos(request):
   pass
 
+def tutorial(request):
+  pass
+
+def cadastro(request):
+  pass
 
 #TODO escrever a funcao de logout
 def logout(request):

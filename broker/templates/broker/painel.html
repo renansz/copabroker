@@ -2,6 +2,7 @@
 
 {% block additional_styles %}
   <link href="/static/bootstrap-switch.css" rel="stylesheet">
+  <link href="/static/book.css" rel="stylesheet">
 {% endblock %}
 
 
@@ -9,104 +10,184 @@
 {% block subtitle %}<h5>Painel de negociação papéis</h5>{% endblock %}
 
 {% block content %}
+  <div class="container padded">
+    <div class="row">
+      <!-- Breadcrumb line -->
+      <div id="breadcrumbs">
+        <div class="breadcrumb-button">
+          <span class="breadcrumb-label"><i class="icon-home"></i> Home</span>
+          <span class="breadcrumb-arrow"><span></span></span>
+        </div>
+        <div class="breadcrumb-button">
+          <span class="breadcrumb-label">
+            <i class="icon-signal"></i> Negociação
+          </span>
+          <span class="breadcrumb-arrow"><span></span></span>
+        </div>
+        <div class="breadcrumb-button">
+          <span class="breadcrumb-label">
+            <i class="icon-globe"></i> {{ stock.name }}
+          </span>
+          <span class="breadcrumb-arrow"><span></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
       <!-- book row -->
       <div id="bookPanel" class="row">
-        <!-- order span -->
-        <div class="span3 " id="orderPanel" >
-          <div class="padded" id="orderPanelContent">
-            <div class="btn-group" data-toggle="buttons">
-              <label id="compra" class="btn btn-lg btn-success" style="width: 50%">
-                <input type="radio" name="compra"  />Compra
-              </label>
-              <label id="venda" class="btn btn-lg btn-warning" style="width: 50%">
-                <input type="radio" name="venda"  />Venda
-              </label>
+        <!-- order box -->
+        <div class="col-sm-3 col-md-2">
+          <div class="box" id="orderPanel">
+            <div class="box-header">
+              <span class="title">Ordem de Compra e Venda</span>
             </div>
-          </div>
-          <!-- /botao venda/compra -->
-          <br />
-          <!-- row -->
-          <div class="padded">
-            <form class="form-horizontal text-left">
-              <div class="padded">
-                <div class="control-group" name="formPreco">
-                  <label class="control-label" style="text-align: right">Preço</label>
-                  <div class="controls">
-                    <input type="form-control" class="form-control text-right" id="formPreco" placeholder="" />
-                  </div>
-                </div>
-                <div class="control-group" name="formQtd">
-                  <label class="control-label">Quantidade</label>
-                  <div class="controls">
-                    <input type="form-control" class="form-control text-right" id="formQtde" placeholder="" />
-                  </div>
-                </div>
-                <div class="control-group" name="formTotal">
-                  <label class="control-label" >Total</label>
-                  <div class="controls">
-                    <p class="form-control-static text-right" id="precoTotal"></p>
-                  </div>
+            <!-- boxcontent-->
+            <div class="box-content" id="orderPanelContent">
+              <!-- row1 -->
+              <div class="row padded text-center">
+                <div class="btn-group" data-toggle="buttons">
+                  <label id="compra" class="btn btn-lg btn-success" style="width: 50%">
+                    <input type="radio" name="compra"  />Compra
+                  </label>
+                  <label id="venda" class="btn btn-lg btn-warning" style="width: 50%">
+                    <input type="radio" name="venda"  />Venda
+                  </label>
                 </div>
               </div>
-            </form>
-          </div> <!-- /row -->
-          <br />
-          <!-- row -->
-          <div class="row text-center">
-            <!-- Button trigger modal -->
-            <a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-default btn-lg disabled">Enviar Ordem</a>
-          </div>
-          <!--/row -->
-          <!-- /order span -->
-        </div>  
-        
-        <!-- book span -->
+              <!-- /row1 -->
+              <!-- row2 -->
+              <div class="row padded">
 
-        <div class="row span8 offset1" id="pricesPanel" >
-          <!-- stock info -->
-          <div class="row text-center">
-            <div class="span6 text-right">
-              <h1 style="display: inline"><span name="ticker">{{ stock.name }}</span>&nbsp<span name="last" class="label label-default">0,00</span></h1><h3 style="display: inline" class="text-right"><br /><small>último negócio</small></h3>
-            </div>
-            <div class="span6 text-left">
-              <img src="{{ stock.image }}" />
-            </div>
-          </div><!-- /stock info -->
-          <br/>
-          <!--bid span -->
-          <div id="bidTable" class="span6">
-            <h2 class="text-center"><span class="label label-success">Compra</span></h2>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th class="text-center">Quantidade</th>
-                  <th class="text-right">Preço</th>
-                </tr>
-              </thead>
-              <tbody name="buy-side">
-              </tbody>
-            </table>
-          </div>
-          <!--/bid span-->
+                <form class="form-horizontal text-left">
+                  <div class="padded">
 
-          <!-- ask span-->
-          <div id="askTable" class="span6">
-            <h2 class="text-center"><span class="label label-warning">Venda</span></h2>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th class="text-left">Preço</th>
-                  <th class="text-center">Quantidade</th>
-                </tr>
-              </thead>
-              <tbody name="sell-side">
-              </tbody>
-            </table>
-          </div><!--/ask span-->
-        </div><!--/book span -->
-      </div><!--/book row-->
-   
-      
+                    <div class="control-group col-sm-12 text-left" name="formPreco">
+                      <label class="control-label">Preço</label>
+                      <div class="controls">
+                        <input type="form-control" class="form-control text-right" id="formPreco" placeholder="" />
+                      </div>
+                    </div>
+
+                    <div class="control-group col-sm-12" name="formQtd">
+                      <label class="control-label">Quantidade</label>
+                      <div class="controls">
+                        <input type="form-control" class="form-control text-right" id="formQtde" placeholder="" />
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- enviar -->
+                  <div class="row text-center">
+                    <!-- Button trigger modal -->
+                    <a data-toggle="modal" id="enviaOrdem" href="#myModal" class="btn btn-lg disabled" style="color: gray">Enviar Ordem</a>
+                  </div>
+                  <!--/enviar -->
+                </form>
+              </div>
+             <!-- /row2-->
+            </div>
+            <!-- /boxcontent-->
+            <div class="table-footer">
+              <div class="row">
+                <div class="col-sm-4 text-left"><h4>Total</h4></div>
+                <div class="col-sm-8 text-right"><h4><span id="precoTotal" class="label label-blue" style="white-space: nowrap; font-size: 0.8em"></span></h4></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /order box -->
+
+        <!-- order box -->
+        <div class="col-sm-8 col-md-7">
+          <div class="box" id="orderPanel">
+            <!--header-->
+            <div class="box-header">
+              <span class="title">Book de Ofertas</span>
+            </div>
+            <!--/header-->
+            <!-- boxcontent-->
+            <div class="box-content" id="orderPanelContent">
+              <div class="row padded">
+                <!-- stock info -->
+                <div class="row padded text-center">
+                  <div class="col-sm-5 text-right">
+                    {% load static %}
+                    <h1><img src="{% get_static_prefix %}flags/{{ stock.ticker }}-sm.png" %}" height="30px"/></h1>
+                  </div>
+                  <div class="col-sm-7 text-left">
+                    <h1><span name="ticker" style="font-size: 0.7em">{{ stock.ticker }}</span>&nbsp<span name="last" class="label label-default" style="font-size: 0.6em"></span></h1><h3 style="display: inline" class="text-right"><small style="font-size: 0.6em">último negócio</small></h3>
+                  </div>
+                </div>
+                <!-- /stock info -->
+                <!--bid span -->
+                <div id="bidTable" class="col-sm-4 col-sm-offset-1">
+                  <div class="box">
+                    <!--header -->
+                    <div class="box-header">
+                      <h2 class="text-center"><span class="label label-success" style="font-size: 0.6em">Compra</span></h2> <br/>
+                    </div>
+                    <!--/header -->
+                    <!--content-->
+                    <div class="box-content">
+                      <table class="table table-normal">
+                        <thead>
+                          <tr>
+                            <td class="text-center">Quantidade</td>
+                            <td class="text-center">Preço</td>
+                          </tr>
+                        </thead>
+                        <tbody name="buy-side">
+                        </tbody>
+                      </table>
+                    </div>
+                    <!--/content-->
+                  </div>
+                </div>
+                <!--/bid span-->
+
+                <!-- ask span-->
+                <div id="askTable" class="col-sm-4 col-sm-offset-2">
+                  <div class="box">
+                    <!--header -->
+                    <div class="box-header">
+                      <h2 class="text-center"><span class="label label-warning" style="font-size: 0.6em">Venda</span></h2> <br/>
+                    </div>
+                    <!--/header -->
+                    <!--content-->
+                    <div class="box-content">
+                      <table class="table table-normal">
+                        <thead>
+                          <tr>
+                            <td class="text-center">Preço</td>
+                            <td class="text-center">Quantidade</td>
+                          </tr>
+                        </thead>
+                        <tbody name="sell-side">
+                        </tbody>
+                      </table>
+                    </div>
+                    <!--/content-->
+                  </div>
+                </div>
+                <!--/ask span-->
+              </div>
+            </div>
+            <!-- /boxcontent-->
+            <!-- footer -->
+            <div class="table-footer">
+              <div class="row text-right padded">
+                <p  style="white-space: nowrap">Ultima atualização:&nbsp<span style="white-space: nowrap" id="ultimoRefresh">12:45</span></p>
+              </div>
+            </div>
+            <!-- /footer -->
+          </div>
+        </div>
+        <!-- /order box -->
+      </div>
+      <!--book row-->
+
+
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

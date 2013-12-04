@@ -1,16 +1,3 @@
-#orderPanel{
-  padding: 5% 4%;
-  box-shadow: 1px 1px 10px #888888;
-}
-
-#pricesPanel{
-  padding: 5% 5%;
-  box-shadow: 1px 1px 10px #888888;
-}
-
-.orderSelected{
-  box-shadow: 1px 1px 10px #888888;
-}
 
 .buyOption{
  background: rgba(92,184,92,0.3);
