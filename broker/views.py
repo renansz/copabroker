@@ -23,7 +23,7 @@ def grupos(request):
     g = [g for g in StockView.objects.prefetch_related()]
     groups = {'A':[],'B':[],'C':[],'D':[],'E':[],'F':[],'G':[],'H':[]}
     for stock in g:
-        _dict = {'name':stock.ticker.name, 'ticker':stock.ticker.ticker, 'group':stock.group, 'image':stock.image}
+        _dict = {'name':stock.ticker.name, 'ticker':stock.ticker.ticker, 'image':stock.image}
         try:
             h = Historical.objects.filter(stock = stock.ticker).order_by('-timestamp').values('value')[0]
             _dict['value'] = h['value']

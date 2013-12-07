@@ -6,44 +6,44 @@ g = open(r'stock_fixture.json','w')
 
 #GRUPO A
 teams = [("BRA",    "Brazil","A"),
-         ("JAP",    "Japan", "A"),
-         ("CHI",    "Chile", "A"),
-         ("HOL",    "Netherlands",       "A")]
+         ("CRO",    "Croatia", "A"),
+         ("MEX",    "Mexico", "A"),
+         ("CMR",    "Cameroon",       "A")]
 #GRUPO B
-teams.append(("ARG",    "Argentina",        "B"))
-teams.append(("IRA",    "Iran",    "B"))
-teams.append(("ECU",    "Ecuador",           "B"))
-teams.append(("ITA",    "Italy",          "B"))
+teams.append(("ESP",    "Spain",        "B"))
+teams.append(("NED",    "Netherlands",    "B"))
+teams.append(("CHI",    "Chile",           "B"))
+teams.append(("AUS",    "Australia",          "B"))
 #GRUPO C
 teams.append(("COL",    "Colombia",   "C"))
-teams.append(("KOR",    "Korea Republic",       "C"))
+teams.append(("GRE",    "Greece",       "C"))
 teams.append(("CIV",    "Côte d'Ivoire",        "C"))
-teams.append(("ENG",    "England",          "C"))
+teams.append(("JPN",    "Japan",          "C"))
 #GRUPO D
 teams.append(("URU",    "Uruguay",     "D"))
-teams.append(("AUS",    "Australia",         "D"))
-teams.append(("GHA",    "Ghana",    "D"))
-teams.append(("POR",    "Portugal",       "D"))
+teams.append(("CRC",    "Costa Rica",         "D"))
+teams.append(("ENG",    "England",    "D"))
+teams.append(("ITA",    "Italy",       "D"))
 #GRUPO E
-teams.append(("SPA",    "Spain",      "E"))
-teams.append(("USA",    "United States of America",        "E"))
-teams.append(("ALG",    "Algeria",    "E"))
-teams.append(("GRE",    "Greece",     "E"))
+teams.append(("SUI",    "Switzerland",      "E"))
+teams.append(("ECU",    "Ecuador",        "E"))
+teams.append(("FRA",    "France",    "E"))
+teams.append(("HON",    "Honduras",     "E"))
 #GRUPO F
-teams.append(("GER",    "Germany",         "F"))
-teams.append(("MEX",    "Mexico",       "F"))
-teams.append(("NIG",    "Nigeria",    "F"))
-teams.append(("BOS",    "Bosnia-Herzegovina",           "F"))
+teams.append(("ARG",    "Argentina",         "F"))
+teams.append(("BIH",    "Bosnia-Herzegovina",       "F"))
+teams.append(("IRN",    "Iran",    "F"))
+teams.append(("NGA",    "Nigeria",           "F"))
 #GRUPO G
-teams.append(("BEL",    "Belgium",           "G"))
-teams.append(("COS",    "Costa Rica",         "G"))
-teams.append(("CAM",    "Cameroon",  "G"))
-teams.append(("CRO",    "Croatia",  "G"))
+teams.append(("GER",    "Germany",           "G"))
+teams.append(("POR",    "Portugal",         "G"))
+teams.append(("GHA",    "Ghana",  "G"))
+teams.append(("USA",    "United States of America",  "G"))
 #GRUPO H
-teams.append(("SWI",    "Switzerland",      "H"))
-teams.append(("HON",    "Honduras",        "H"))
-teams.append(("FRA",    "France",        "H"))
-teams.append(("RUS",    "Russia",     "H"))
+teams.append(("BEL",    "Belgium",      "H"))
+teams.append(("ALG",    "Algeria",        "H"))
+teams.append(("RUS",    "Russia",        "H"))
+teams.append(("KOR",    "Korea Republic",     "H"))
 
 id = 1
 f.write("[")
