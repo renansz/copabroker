@@ -1,0 +1,321 @@
+[  {
+    "model": "broker.stockview",
+    "pk": 1,
+    "fields": {
+          "ticker": "1",
+          "ticker_name": "BRA",
+          "country_name": "Brazil",
+          "group": "A"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 2,
+    "fields": {
+          "ticker": "2",
+          "ticker_name": "CRO",
+          "country_name": "Croatia",
+          "group": "A"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 3,
+    "fields": {
+          "ticker": "3",
+          "ticker_name": "MEX",
+          "country_name": "Mexico",
+          "group": "A"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 4,
+    "fields": {
+          "ticker": "4",
+          "ticker_name": "CMR",
+          "country_name": "Cameroon",
+          "group": "A"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 5,
+    "fields": {
+          "ticker": "5",
+          "ticker_name": "ESP",
+          "country_name": "Spain",
+          "group": "B"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 6,
+    "fields": {
+          "ticker": "6",
+          "ticker_name": "NED",
+          "country_name": "Netherlands",
+          "group": "B"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 7,
+    "fields": {
+          "ticker": "7",
+          "ticker_name": "CHI",
+          "country_name": "Chile",
+          "group": "B"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 8,
+    "fields": {
+          "ticker": "8",
+          "ticker_name": "AUS",
+          "country_name": "Australia",
+          "group": "B"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 9,
+    "fields": {
+          "ticker": "9",
+          "ticker_name": "COL",
+          "country_name": "Colombia",
+          "group": "C"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 10,
+    "fields": {
+          "ticker": "10",
+          "ticker_name": "GRE",
+          "country_name": "Greece",
+          "group": "C"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 11,
+    "fields": {
+          "ticker": "11",
+          "ticker_name": "CIV",
+          "country_name": "Côte d'Ivoire",
+          "group": "C"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 12,
+    "fields": {
+          "ticker": "12",
+          "ticker_name": "JPN",
+          "country_name": "Japan",
+          "group": "C"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 13,
+    "fields": {
+          "ticker": "13",
+          "ticker_name": "URU",
+          "country_name": "Uruguay",
+          "group": "D"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 14,
+    "fields": {
+          "ticker": "14",
+          "ticker_name": "CRC",
+          "country_name": "Costa Rica",
+          "group": "D"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 15,
+    "fields": {
+          "ticker": "15",
+          "ticker_name": "ENG",
+          "country_name": "England",
+          "group": "D"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 16,
+    "fields": {
+          "ticker": "16",
+          "ticker_name": "ITA",
+          "country_name": "Italy",
+          "group": "D"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 17,
+    "fields": {
+          "ticker": "17",
+          "ticker_name": "SUI",
+          "country_name": "Switzerland",
+          "group": "E"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 18,
+    "fields": {
+          "ticker": "18",
+          "ticker_name": "ECU",
+          "country_name": "Ecuador",
+          "group": "E"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 19,
+    "fields": {
+          "ticker": "19",
+          "ticker_name": "FRA",
+          "country_name": "France",
+          "group": "E"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 20,
+    "fields": {
+          "ticker": "20",
+          "ticker_name": "HON",
+          "country_name": "Honduras",
+          "group": "E"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 21,
+    "fields": {
+          "ticker": "21",
+          "ticker_name": "ARG",
+          "country_name": "Argentina",
+          "group": "F"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 22,
+    "fields": {
+          "ticker": "22",
+          "ticker_name": "BIH",
+          "country_name": "Bosnia-Herzegovina",
+          "group": "F"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 23,
+    "fields": {
+          "ticker": "23",
+          "ticker_name": "IRN",
+          "country_name": "Iran",
+          "group": "F"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 24,
+    "fields": {
+          "ticker": "24",
+          "ticker_name": "NGA",
+          "country_name": "Nigeria",
+          "group": "F"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 25,
+    "fields": {
+          "ticker": "25",
+          "ticker_name": "GER",
+          "country_name": "Germany",
+          "group": "G"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 26,
+    "fields": {
+          "ticker": "26",
+          "ticker_name": "POR",
+          "country_name": "Portugal",
+          "group": "G"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 27,
+    "fields": {
+          "ticker": "27",
+          "ticker_name": "GHA",
+          "country_name": "Ghana",
+          "group": "G"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 28,
+    "fields": {
+          "ticker": "28",
+          "ticker_name": "USA",
+          "country_name": "United States of America",
+          "group": "G"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 29,
+    "fields": {
+          "ticker": "29",
+          "ticker_name": "BEL",
+          "country_name": "Belgium",
+          "group": "H"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 30,
+    "fields": {
+          "ticker": "30",
+          "ticker_name": "ALG",
+          "country_name": "Algeria",
+          "group": "H"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 31,
+    "fields": {
+          "ticker": "31",
+          "ticker_name": "RUS",
+          "country_name": "Russia",
+          "group": "H"
+    }
+  },
+    {
+    "model": "broker.stockview",
+    "pk": 32,
+    "fields": {
+          "ticker": "32",
+          "ticker_name": "KOR",
+          "country_name": "Korea Republic",
+          "group": "H"
+    }
+  }]
+  

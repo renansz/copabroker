@@ -1,0 +1,257 @@
+[  {
+    "model": "BrokerEngine.stock",
+    "pk": 1,
+    "fields": {
+          "ticker": "BRA",
+          "name": "Brazil"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 2,
+    "fields": {
+          "ticker": "CRO",
+          "name": "Croatia"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 3,
+    "fields": {
+          "ticker": "MEX",
+          "name": "Mexico"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 4,
+    "fields": {
+          "ticker": "CMR",
+          "name": "Cameroon"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 5,
+    "fields": {
+          "ticker": "ESP",
+          "name": "Spain"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 6,
+    "fields": {
+          "ticker": "NED",
+          "name": "Netherlands"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 7,
+    "fields": {
+          "ticker": "CHI",
+          "name": "Chile"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 8,
+    "fields": {
+          "ticker": "AUS",
+          "name": "Australia"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 9,
+    "fields": {
+          "ticker": "COL",
+          "name": "Colombia"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 10,
+    "fields": {
+          "ticker": "GRE",
+          "name": "Greece"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 11,
+    "fields": {
+          "ticker": "CIV",
+          "name": "Côte d'Ivoire"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 12,
+    "fields": {
+          "ticker": "JPN",
+          "name": "Japan"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 13,
+    "fields": {
+          "ticker": "URU",
+          "name": "Uruguay"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 14,
+    "fields": {
+          "ticker": "CRC",
+          "name": "Costa Rica"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 15,
+    "fields": {
+          "ticker": "ENG",
+          "name": "England"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 16,
+    "fields": {
+          "ticker": "ITA",
+          "name": "Italy"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 17,
+    "fields": {
+          "ticker": "SUI",
+          "name": "Switzerland"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 18,
+    "fields": {
+          "ticker": "ECU",
+          "name": "Ecuador"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 19,
+    "fields": {
+          "ticker": "FRA",
+          "name": "France"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 20,
+    "fields": {
+          "ticker": "HON",
+          "name": "Honduras"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 21,
+    "fields": {
+          "ticker": "ARG",
+          "name": "Argentina"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 22,
+    "fields": {
+          "ticker": "BIH",
+          "name": "Bosnia-Herzegovina"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 23,
+    "fields": {
+          "ticker": "IRN",
+          "name": "Iran"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 24,
+    "fields": {
+          "ticker": "NGA",
+          "name": "Nigeria"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 25,
+    "fields": {
+          "ticker": "GER",
+          "name": "Germany"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 26,
+    "fields": {
+          "ticker": "POR",
+          "name": "Portugal"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 27,
+    "fields": {
+          "ticker": "GHA",
+          "name": "Ghana"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 28,
+    "fields": {
+          "ticker": "USA",
+          "name": "United States of America"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 29,
+    "fields": {
+          "ticker": "BEL",
+          "name": "Belgium"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 30,
+    "fields": {
+          "ticker": "ALG",
+          "name": "Algeria"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 31,
+    "fields": {
+          "ticker": "RUS",
+          "name": "Russia"
+    }
+  },
+    {
+    "model": "BrokerEngine.stock",
+    "pk": 32,
+    "fields": {
+          "ticker": "KOR",
+          "name": "Korea Republic"
+    }
+  }]
+  
