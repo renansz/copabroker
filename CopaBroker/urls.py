@@ -1,8 +1,11 @@
 from django.conf.urls import patterns, include, url
+from broker.models import StockView,BrokerNew
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+admin.site.register(BrokerNew)
+admin.site.register(StockView)
 
 urlpatterns = patterns('',
     # Examples:

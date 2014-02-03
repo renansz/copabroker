@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'CopaBroker.views.home', name='home'),
     # url(r'^CopaBroker/', include('CopaBroker.foo.urls')),
     url(r'^$', 'broker.views.grupos'),
-    url(r'^noticias/$', 'broker.views.noticias'),
+    url(r'^noticias/$', 'broker.views.news'),
     url(r'^grupos/$', 'broker.views.grupos'),
     url(r'^painel/(\w+)/$', 'broker.views.painel'),
     url(r'^minhas_ordens/$', 'broker.views.minhas_ordens'),
@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^tutorial/$', 'broker.views.tutorial'),
     url(r'^cadastro/$', 'broker.views.cadastro'),
     url(r'^book/(\w+)/$', 'broker.views.book'),
-    url(r'^login/$', 'broker.views.login_user')
+    url(r'^login/$', 'broker.views.login_user'),
+    url(r'^logout/$', 'broker.views.logout_user')
 )

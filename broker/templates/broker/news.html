@@ -1,0 +1,59 @@
+{% extends "broker/core.html" %}
+
+{% block additional_styles %}
+<style>
+  tr.news{
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+
+{% block title %}<h3><i class="icon-th"></i>Últimas Notícias</h3>{% endblock %}
+{% block subtitle %}<h5>Confira as novidades sobre o mercado da bola.</h5>{% endblock %}
+
+{% block content %}
+
+    <div id="content" class="row">
+      <div class="col-sm-8 col-xs-12">
+        <div class="row">
+          <div class="box"> <!-- News box -->
+
+            <div class="box-header">
+              <span class="title">Notícias</span>
+              <ul class="box-toolbar">
+                <li><span class="label label-blue">TOP 5</span></li>
+              </ul>
+            </div>
+            
+            <div class="box-content scrollable" style="overflow-y: auto"><!-- box content-->
+
+           {% load static %}
+           {% for new in news %}
+            <!-- find me in partials/news_with_icons -->
+            <!-- TODO fix the date formatting, fix the images get process, adjust the size -->
+          <div class="box-section news with-icons">
+            <div class={% cycle 'avatar blue','avatar green','avatar purple' %}><i class="{% cycle icon-mobile-phone,icon-lightbulb,icon-ok %} icon-2x"></i></div>
+            <div class="news-time">
+              <span>{% cycle 06,12,23 %}</span> {% cycle jan,feb,may %}
+            </div>
+            <div class="news-content">
+              <div class="news-title"><a href="#">{{ new.title }}</a></div>
+              <div class="news-text">
+                {{ new.short_text}} 
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          </div> <!-- /box content -->
+
+        </div><!-- /News box -->
+
+        </div>
+      </div>
+    </div>
+
+{% endblock %} 
+
+{% block scripts %}
+  <script type="text/javascript" src="/static/news.js"></script>
+{% endblock %}

@@ -48,7 +48,7 @@
            {% for team in teams %}
                 <tr name="team" class="team">
                   <td name="flag"><img src="{% get_static_prefix %}flags/{{ team.ticker }}-sm.png" %}"/></td>
-                  <td name="name"><a href="painel/{{team.ticker}}">{{ team.name }}</a></td>
+                  <td name="name"><a href="/broker/painel/{{team.ticker}}">{{ team.ticker }}</a></td>
                   <td name="price" class="text-right">{{ team.value | floatformat:2 }}</td>
                 </tr>			
            {% endfor%}
