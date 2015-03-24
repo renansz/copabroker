@@ -15,7 +15,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3', #'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'ENGINE':'django.db.backends.postgresql_psycopg2',
 #	'NAME': 'CopaBroker.sqlite3.db', # Or path to database file if using sqlite3.
-	'NAME':'CopaBrokerDB',
+	'NAME':'copabrokerdb',
         # The following settings are not used with sqlite3:
         'USER': 'postgresql',
         'PASSWORD': 'bakrlz',
@@ -26,7 +26,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['renansz.no-ip.org']
+ALLOWED_HOSTS = ['renansz-xen1g.no-ip.org']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
